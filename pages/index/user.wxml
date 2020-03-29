@@ -1,0 +1,5 @@
+<view wx:for="{{data}}" wx:key="index">
+  <view>{{item}}</view>
+</view>
+<image src="{{img}}" style="width:32px;height:32px;"></image>
+

@@ -1,0 +1,23 @@
+map{
+  width: 100%;
+  height: 100vh;
+}
+.img  image{
+  width: 10%;
+  height: 10%;
+}
+input{
+  /* border:1px solid black; */
+  background-color:#f6f6f6;
+  width:300rpx;
+  border-radius: 10px;
+  /* margin-left: 100px; */
+  margin: 0 auto;
+  position: relative;
+  top:60rpx;
+}
+#backIcon{
+  position: fixed;
+  top:630px;
+  left: 310px;
+}

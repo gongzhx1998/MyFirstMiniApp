@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/user",
+    "pages/temp/temp",
+    "pages/map/map",
+    "pages/temp/News/News-detail",
+    "pages/asd/asd"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "navigationStyle": "default",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#e6e6e6",
+    "navigationBarTitleText": "🐂🍺",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/temp/temp",
+        "text": "Temp"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text": "Map"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

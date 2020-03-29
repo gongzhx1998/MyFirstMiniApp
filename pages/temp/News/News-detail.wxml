@@ -1,0 +1,19 @@
+<view class="post-Container">
+  <view class="post-header">
+    <image src="{{psot_data.HeaderIMG}}" class="post-header-image"></image>
+    <text class="post-header-text">{{psot_data.Time}}</text>
+  </view>
+  <view class="post-title">
+    <text>{{psot_data.Title}}</text>
+  </view>
+  <view data-newsID="{{psot_data.NewsId}}">
+    <image src="{{psot_data.ContentIMG}}" style="width:100%;"></image>
+    <text class="post-content">{{psot_data.Content}}</text>
+  </view>
+  <view class="post-footer">
+    <image src="{{psot_data.CollectedIMG}}"></image>
+    <text>555</text>
+    <image src="{{psot_data.WatchedIMG}}"></image>
+    <text>22</text>
+  </view>
+</view>

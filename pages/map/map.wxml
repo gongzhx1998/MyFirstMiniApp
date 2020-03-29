@@ -1,0 +1,13 @@
+<view style="background-color:#e6e6e6;height:130rpx;">
+  <input placeholder="搜索地点" type="text"></input>
+</view>
+<view>
+  <map id="{{mapId}}" enable-traffic="true" scale="{{scale}}" bindtap="tapMap" bindmarkertap="markerTap" show-location="false" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{mark}}">
+  <view id="backIcon" style="height:70rpx;width:70rpx;border:none" bindtap="back">
+    <!-- <button bindtap="back" size="mini" style="height:70rpx;width:70rpx;border:none" plain="true">
+      <image style="height:70rpx;width:70rpx;" src="/img/getLocation.png"></image>
+    </button> -->
+    <image style="height:70rpx;width:70rpx;" src="/img/getLocation.png"></image>
+  </view>
+  </map>
+</view>

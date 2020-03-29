@@ -1,0 +1,18 @@
+var exp = function (array) {
+  var max=undefined;
+  for (var i = 0; i < array.length; ++i) {
+    // Min > array[i] ? Max = array[i] : Max;
+    max = max === undefined ? array[i] : (max >= array[i] ? max : array[i]);
+  }
+  return max;
+}
+module.exports.GetMax = exp;
+
+var getMin=function(array){
+  var min=undefined;
+  for(var i=0;i<array.length;++i){
+    min=min===undefined?array[i]:(min>=array[i]?min=array[i]:min);
+  }
+  return min;
+}
+module.exports.GetMin=getMin;

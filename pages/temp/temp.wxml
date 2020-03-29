@@ -1,0 +1,98 @@
+<!-- 轮播模块 -->
+<swiper class="div" indicator-dots="true" autoplay="true" interval="3500">
+  <swiper-item>
+    <image src="../../img/meinv.png"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="../../img/meinv.png"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="../../img/meinv.png"></image>
+  </swiper-item>
+</swiper>
+<!-- 新闻列表 -->
+<view class="post-Container" wx:for="{{psot_data}}" wx:key="Index">
+  <view class="post-header">
+    <image src="{{item.HeaderIMG}}" class="post-header-image"></image>
+    <text class="post-header-text">{{item.Time}}</text>
+  </view>
+  <text class="post-title">{{item.Title}}</text>
+  <view bindtap="post_item" data-newsID="{{item.NewsId}}">
+    <image src="{{item.ContentIMG}}" style="width:100%;"></image>
+    <text  class="post-content">{{item.Content}}</text>
+  </view>
+  <view class="post-footer">
+    <image src="{{item.CollectedIMG}}"></image>
+    <text>555</text>
+    <image src="{{item.WatchedIMG}}"></image>
+    <text>22</text>
+  </view>
+</view>
+<!-- flex布局row -->
+<view class="section">
+  <!-- <view class="section__title">flex-direction: row</view> -->
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="flex-item bgc-green">1</view>
+    <view class="flex-item bgc-red">2</view>
+    <view class="flex-item bgc-blue">
+      <text>3</text>
+    </view>
+  </view>
+</view>
+<rich-text nodes="{{nodes1}}"></rich-text>
+<!-- flex布局 column -->
+<view class="section">
+  <view class="flex-wrap">
+    <view class="flex-item bgc-green">1</view>
+    <view class="flex-item bgc-red">2</view>
+    <view class="flex-item bgc-blue">3</view>
+  </view>
+</view>
+<!-- scroll-view -->
+<view class="container">
+  <view class="head">
+    <text>纵向滚动</text>
+  </view>
+  <view class="body">
+    <scroll-view class="scroll-wrap" scroll-y="true">
+      <view class="scroll-item bgc-green">1</view>
+      <view class="scroll-item bgc-red">2</view>
+      <view class="scroll-item bgc-blue">3</view>
+      <view class="scroll-item">
+        彼岸花开，花开彼岸，花开不见叶，叶生不见花，相惜相念不相见。
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<!-- scroll-view -->
+<view class="container">
+  <view class="title">
+    <text>超长文本</text>
+  </view>
+  <view class="body">
+    <scroll-view class="scroll-wrap" scroll-y="true" style="height:300rpx;">
+      <view class="scroll-item">
+        <text>
+        欢迎你来到麦格。这是一个真正属于我们的精神家园。 　　一，希望你能把写过的文字大胆地表达出来，麦格鼓励所有同学的表达，说不定因此就能遇到喜欢你的朋友。 　　三，不要吝啬赞美。看到好的文章或者打动你的词句，赞一个或评论一下，都是你的情感表达，这也会让更多的人认识你。四，麦格期待你的反馈。你是麦格的主人，有权利也有义务把麦格建设的更好，所以，请告诉我们你在使用中遇到的问题和建议。 作文网专稿未经允许不得转载 　　亲爱的绘子王： 　　在这里，你可以做很多你喜欢的事情，当然，你也可以听一听我们的建议： 　　二，当你在作文网或者其他地方，发现优美词句时，希望你能分享到麦格，不仅是为自己，也为世界更美一些，这很重要，麦格需要你的参与：）
+        高三:会王
+        </text>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- checkbox -->
+<checkbox-group bindchange="checkboxChange">
+  <label wx:for="{{items}}" wx:key="key">
+    <checkbox value="{{item.name}}"></checkbox>{{item.value}}
+  </label>
+</checkbox-group>
+<rich-text nodes="{{nodes2}}"></rich-text>
+<input confirm-type="next" adjust-position="true" bindinput="input" placeholder="文本输入框"></input>
+<input type="number" confirm-type="next" placeholder="数字键盘"></input>
+<input type="idcard" confirm-type="next" placeholder="身份证"></input>
+<input type="digit" confirm-type="next" placeholder="带小数点的数字键盘"></input>
+<view>
+  <text>实时获取输入内容：{{inputvalue}}</text>
+</view>
+<input placeholder="实时获取输入内容" maxlength="10" type="text" adjust-position="true" bindinput="GetValue" confirm-type="done"></input>
