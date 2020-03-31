@@ -110,7 +110,8 @@ Page({
     let that = this;
     wx.request({
       url: domainUrl + '/Work/GetNews',
-      success: res => {
+      method:'POST',
+      success: res => {      
         let post_data = res.data;
         that.setData({
           psot_data: post_data

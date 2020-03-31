@@ -1,4 +1,6 @@
 // pages/temp/News/News-detail.js
+let app=getApp();
+let domainUrl = app.globalData.url;
 Page({
 
   /**
@@ -13,15 +15,25 @@ Page({
    */
   onLoad: function (options) {        
     let that=this;
+    let e;
     const eventChannel = this.getOpenerEventChannel();
     // eventChannel.emit('acceptDataFromOpenedPage', { data: 'test' });
     // eventChannel.emit('someEvent', { data: 'test' });
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
-      let e=data.data.data;
+      e=data.data.data;
       that.setData({
         psot_data: e
       });
+    });
+    wx.request({
+      url: domainUrl+'/Work/UpdatePV',
+      method:'POST',
+      data:{
+        'id':e.NewsId
+      },success:res=>{
+        console.log(res);
+      }
     });
   },
 
@@ -31,7 +43,6 @@ Page({
   onReady: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */

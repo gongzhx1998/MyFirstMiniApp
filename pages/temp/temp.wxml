@@ -23,9 +23,9 @@
   </view>
   <view class="post-footer">
     <image src="{{item.CollectedIMG}}"></image>
-    <text>555</text>
+    <text>{{item.Favorites}}</text>
     <image src="{{item.WatchedIMG}}"></image>
-    <text>22</text>
+    <text>{{item.PV}}</text>
   </view>
 </view>
 <!-- flex布局row -->

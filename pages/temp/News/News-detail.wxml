@@ -12,8 +12,8 @@
   </view>
   <view class="post-footer">
     <image src="{{psot_data.CollectedIMG}}"></image>
-    <text>555</text>
+    <text>{{psot_data.Favorites}}</text>
     <image src="{{psot_data.WatchedIMG}}"></image>
-    <text>22</text>
+    <text>{{psot_data.PV}}</text>
   </view>
 </view>
