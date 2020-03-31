@@ -4,8 +4,7 @@
     "pages/index/user",
     "pages/temp/temp",
     "pages/map/map",
-    "pages/temp/News/News-detail",
-    "pages/asd/asd"
+    "pages/temp/News/News-detail"
   ],
   "permission": {
     "scope.userLocation": {
