@@ -36,6 +36,10 @@ Page({
       }
     });
   },
+  Collect:e=>{
+    let id=e.currentTarget.dataset.id;
+    console.log(id);
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
