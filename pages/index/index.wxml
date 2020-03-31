@@ -79,7 +79,7 @@
 
 <button bindtap="Scan" size="mini" type="warn">点击扫描</button>
 <view class="camera-container">
-  <!-- <camera style="width:100%;height:300px;" device-position="back" flash="auto" binderror="error"></camera> -->
+  <camera style="width:100%;height:300px;" device-position="back" flash="auto" binderror="error"></camera>
 
   <button style="margin:5px 0 5px 0;" type="primary" bindtap="TakePhoto">拍照</button>
   <button style="margin:5px 0 5px 0;" type="primary" bindtap="startRecord">开始录像</button>

@@ -246,6 +246,7 @@ Page({
           success: res => {
             console.log(res);
             wx.setStorageSync("SessionId", res.data.SessionId);
+            wx.setStorageSync('openId', res.data.Open_Id);
           },
           fail: err => {
             console.log(err);

@@ -1,6 +1,5 @@
 {
   "navigationBarBackgroundColor": "#43ad7f",
-  "enablePullDownRefresh": false,
   "navigationBarTitleText": "News",
   "usingComponents": {}
 }

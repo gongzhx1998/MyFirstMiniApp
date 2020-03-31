@@ -11,8 +11,8 @@
     <text class="post-content">{{psot_data.Content}}</text>
   </view>
   <view class="post-footer">
-    <image src="{{psot_data.CollectedIMG}}" catchtap="Collect" data-ID="{{psot_data.NewsId}}"></image>
-    <text>{{psot_data.Favorites}}</text>
+    <image src="{{psot_data.CollectedIMG}}" catchtap="Collect" data-Favorites="{{psot_data.Favorites}}" data-ID="{{psot_data.NewsId}}"></image>
+    <text>{{Favorites}}</text>
     <image src="{{psot_data.WatchedIMG}}"></image>
     <text>{{psot_data.PV}}</text>
   </view>
