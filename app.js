@@ -33,7 +33,7 @@ App({
       }
     });
     //
-    let isDebug=true;
+    let isDebug=false;
     let _url = isDebug ? 'http://api.legschina.com' : 'https://legschina.com' ;
     this.globalData.url=_url;
   },
