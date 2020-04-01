@@ -70,31 +70,30 @@ Page({
    */
   onShow: function () {
     let that = this;
-    let e;
-    const eventChannel = this.getOpenerEventChannel();
+    let eventChannel = this.getOpenerEventChannel();
     // eventChannel.emit('acceptDataFromOpenedPage', { data: 'test' });
     // eventChannel.emit('someEvent', { data: 'test' });
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
-      e = data.data.data;
+      let e = data.data.data;
       that.setData({
         psot_data: e,
         Favorites: e.Favorites
       });
-    });
-    wx.request({
-      url: domainUrl + '/Work/UpdatePV',
-      method: 'POST',
-      data: {
-        'id': e.NewsId
-      },
-      success: res => {
-        console.log(res);
-      },
-      fail: err => {
-        console.log(err);
-      }
-    });
+      wx.request({
+        url: domainUrl + '/Work/UpdatePV',
+        method: 'POST',
+        data: {
+          'id': e.NewsId
+        },
+        success: res => {
+          console.log(res);
+        },
+        fail: err => {
+          console.log(err);
+        }
+      });
+    });    
   },
 
   /**
