@@ -9,7 +9,6 @@
     <image src="../../img/bazaar.png"></image>
   </view>
 </scroll-view>
-<button size="MINI" bindtap="getuser" open-type="getUserInfo" type="primary">点击登陆</button>
 <template name="abc">
   <text>{{aa}}</text>
 </template>

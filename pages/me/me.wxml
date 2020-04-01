@@ -1,0 +1,36 @@
+	<!-- 最上方登录框 -->
+	<view wx:if="{{IsLogin}}">
+		<view class="wrap">
+			<view class="person">
+				<view class="img-wrap">
+					<image src="{{headImg}}" class="headImg"></image>
+				</view>
+				<view class="nickName">
+					<text >{{nickName}}</text>
+					<text> {{city}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view wx:else class="LoginBtn">
+		<button open-type="getUserInfo" catchtap="singIn">点击登录</button>
+	</view>
+
+
+	<view class="operation">
+		<!-- 微信设置 -->
+		<view bindtap="quit" class="settings flex">
+			<image src="/img/chilun.png"></image>
+			<text>打开设置</text>
+		</view>
+		<!-- 清理缓存 -->
+		<view bindtap="clear" class="clear flex">
+			<image src="/img/clear.png"></image>
+			<text>清理缓存</text>
+		</view>
+		<!-- 退出登录 -->
+		<view bindtap="quit" class="quitView flex">
+			<image src="/img/out.png"></image>
+			<text>退出登录</text>
+		</view>
+	</view>

@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/user",
     "pages/temp/temp",
     "pages/map/map",
-    "pages/temp/News/News-detail"
+    "pages/temp/News/News-detail",
+    "pages/me/me"
   ],
   "permission": {
     "scope.userLocation": {
@@ -14,7 +14,7 @@
   "window": {
     "navigationStyle": "default",
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#e6e6e6",
+    "navigationBarBackgroundColor": "#43ad7f",
     "navigationBarTitleText": "🐂🍺",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
@@ -23,15 +23,22 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath":"img/index.png",
+        "selectedIconPath":"img/index-select.png"
       },
       {
         "pagePath": "pages/temp/temp",
-        "text": "Temp"
+        "text": "文章",
+        "iconPath":"img/news.png",
+        "selectedIconPath":"img/news-select.png"
       },
       {
-        "pagePath": "pages/map/map",
-        "text": "Map"
+        "pagePath": "pages/me/me",
+        "text": "个人中心",
+        "iconPath":"img/person.png",
+        "selectedIconPath":"img/person-select.png",
+        "badge":false
       }
     ]
   },

@@ -171,26 +171,6 @@ Page({
       }
     });
   },
-  //点击登录
-  getuser: function() {
-    setTimeout(function() {
-      wx.getSetting({
-        success: res => {
-          if (res.authSetting['scope.userInfo']) {
-            wx.navigateTo({
-              url: './user',
-            });
-          } else {
-            wx.showModal({
-              title: '提示',
-              content: '请您授权登录后重试。',
-              showCancel: false
-            });
-          }
-        }
-      });
-    }, 2500);
-  },
   //下载pic
   down: function() {
     wx.downloadFile({

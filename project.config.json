@@ -78,6 +78,13 @@
 					"pathName": "pages/a/a",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/me",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

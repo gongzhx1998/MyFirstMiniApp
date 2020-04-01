@@ -1,0 +1,68 @@
+page{
+  background-color: #e3e3e3;
+}
+.wrap{
+  width: 100%;
+  background-color: #FFF;
+  box-sizing: border-box;
+}
+.LoginBtn{
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 0.5rpx solid #333;
+  background-color: #FFF;
+}
+.LoginBtn button{
+  line-height: 60rpx;
+  color: #333;
+  background-color: #FFF;
+}
+.person{
+  width: 100%;
+  height: 180rpx;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.headImg{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 6px;
+  vertical-align: center;
+}
+.nickName{
+  width: 33.333333333%;
+  display: flex;
+  flex-direction: column;
+  /* margin-left:180rpx; */
+}
+.img-wrap{
+  width: 33.333333333%;
+}
+.operation{
+  width: 100%;
+  margin-top: 40rpx;
+  box-sizing: border-box;
+}
+.operation view{
+  width: 100%;
+  height: 70rpx;
+  background-color: #FFF;
+  margin-bottom: 30rpx;
+  padding-left: 20rpx;  
+}
+.operation view text{
+  line-height: 70rpx;
+  color: #333;
+}
+.operation image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+}
+.flex{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

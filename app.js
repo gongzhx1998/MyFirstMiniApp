@@ -32,7 +32,7 @@ App({
         }
       }
     });
-    //
+    //是否为调试状态
     let isDebug=false;
     let _url = isDebug ? 'http://api.legschina.com' : 'https://legschina.com' ;
     this.globalData.url=_url;
