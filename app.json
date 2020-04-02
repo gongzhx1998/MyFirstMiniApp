@@ -4,7 +4,10 @@
     "pages/temp/temp",
     "pages/map/map",
     "pages/temp/News/News-detail",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/me/MyBaseInfo/MyBaseInfo",
+    "pages/me/MyCollection/Collection"
+    
   ],
   "permission": {
     "scope.userLocation": {

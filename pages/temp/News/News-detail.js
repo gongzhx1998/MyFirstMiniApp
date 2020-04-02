@@ -8,7 +8,7 @@ Page({
    */
   data: {
     psot_data: [],
-    Favorites: 0
+    FavoritesCount: 0
   },
 
   /**
@@ -26,7 +26,7 @@ Page({
       wx.showModal({
         showCancel: false,
         title: '错误',
-        content: '未获取到OpenId，请登录后重新尝试！'
+        content: '请登录后重新尝试！'
       });
       return;
     }
@@ -45,7 +45,7 @@ Page({
         });
         if (res.data == '收藏成功') {
           that.setData({
-            Favorites: FavoriteCount
+            FavoritesCount: FavoriteCount
           });
         }
       },
@@ -78,7 +78,7 @@ Page({
       let e = data.data.data;
       that.setData({
         psot_data: e,
-        Favorites: e.Favorites
+        FavoritesCount: e.FavoritesCount
       });
       wx.request({
         url: domainUrl + '/Work/UpdatePV',
@@ -87,7 +87,7 @@ Page({
           'id': e.NewsId
         },
         success: res => {
-          console.log(res);
+          
         },
         fail: err => {
           console.log(err);

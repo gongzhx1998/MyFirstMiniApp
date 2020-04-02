@@ -85,6 +85,13 @@
 					"pathName": "pages/me/me",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/me/MyBaseInfo/MyBaseInfo",
+					"pathName": "pages/me/MyBaseInfo/MyBaseInfo",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

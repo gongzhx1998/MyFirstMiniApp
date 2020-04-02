@@ -101,7 +101,7 @@ Page({
                 },
               });
             }
-          })
+          });
         }
       }
     } else {
@@ -185,7 +185,7 @@ Page({
     }
   },
   //退出登录
-  quit: function() {
+  quit: function () {
     let that = this;
     wx.removeStorage({
       key: 'openId',
@@ -201,12 +201,43 @@ Page({
           }
         });
       }
-    })
+    });
   },
   //设置
-  settings:function(){
+  settings: function () {
     wx.openSetting({
       complete: (res) => {},
-    })
+    });
   },
+  ViewCollection: function () {
+    let openid = wx.getStorageSync('openId');
+    let that = this;
+
+    wx.request({
+        url: domainUrl + '/Work/ViewCollection',
+        data: {
+          'open_Id': openid
+        },
+        success: res => {
+          // console.log(res);
+          let temp=res.data.data;
+          if (res.data.msg == '获取成功') {
+            wx.navigateTo({
+                url: 'MyCollection/Collection',
+                events: {
+                  getdata: function (options) {
+                    console.log(options)
+                  }
+                },
+                success:res=>{
+                  res.eventChannel.emit('sendData',{data:temp})                  
+                }
+            });
+          }
+      },
+      fail: err => {
+        console.log(err)
+      }
+    });
+},
 })

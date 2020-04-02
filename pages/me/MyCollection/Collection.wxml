@@ -1,0 +1,5 @@
+<view class="wrap">
+  <view wx:for="{{initData}}" wx:key="Index">
+    <view>{{item}}</view>
+  </view>
+</view>

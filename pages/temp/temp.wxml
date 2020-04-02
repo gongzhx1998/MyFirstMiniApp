@@ -23,7 +23,7 @@
   </view>
   <view class="post-footer">
     <image src="{{item.CollectedIMG}}"></image>
-    <text>{{item.Favorites}}</text>
+    <text>{{item.FavoritesCount}}</text>
     <image src="{{item.WatchedIMG}}"></image>
     <text>{{item.PV}}</text>
   </view>

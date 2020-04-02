@@ -214,50 +214,6 @@ Page({
       },
     });
   },
-  singIn: function(e) {
-    wx.login({
-      success: res => {
-        wx.request({
-          url: domainUrl + '/wxLogin/Index',
-          method: 'POST',
-          data: {
-            key: res.code
-          },
-          success: res => {
-            console.log(res);
-            wx.setStorageSync("SessionId", res.data.SessionId);
-            wx.setStorageSync('openId', res.data.Open_Id);
-          },
-          fail: err => {
-            console.log(err);
-          },
-          //效验
-          complete: com => {
-            wx.getUserInfo({
-              withCredentials: true,
-              success: function(userRes) {
-                wx.request({
-                  url: domainUrl + '/wxLogin/OnCheck',
-                  method: 'POST',
-                  data: {
-                    sessionId: wx.getStorageSync("SessionId"),
-                    rawData: userRes.rawData,
-                    signnature: userRes.signature
-                  },
-                  success: res => {
-                    console.log(res);
-                  }
-                });
-              },
-              fail: function(err) {
-                console.log(err);
-              }
-            });
-          }
-        });
-      }
-    });
-  },
   //获取Token
   getToken: () => {
     wx.request({
@@ -302,7 +258,5 @@ Page({
       ],
     });
 
-  },
-  clearStorage: () => {
   },
 });

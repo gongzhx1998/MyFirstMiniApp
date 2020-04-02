@@ -14,12 +14,8 @@
 </template>
 <button type="warn" bindtap="down">点击下载</button>
 <button type="primary" bindtap="uploadFile">上传图片</button>
-<button type="warn" bindtap="singIn" open-type="getUserInfo">userInfo</button>
 <button type="primary" bindtap="getToken">获取Token</button>
 <button type="warn" bindtap="openDoc">openDoc</button>
-<button type="warn" bindtap="clearStorage" id="btn">clearStorage</button>
-<button type="warn" bindtap="openset">opensetting</button>
-
 
 <!-- 
 <scroll-view scroll-y='true' style="width:100%;height:300px;" class="scr">
