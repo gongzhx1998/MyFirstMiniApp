@@ -83,25 +83,39 @@ Page({
     wx.showLoading({
       title: '正在清理',
     });
-    let cache=wx.getStorageInfoSync().keys;
-    for (let item of cache) {
-      if(item=='logs'){
-        wx.removeStorage({
-          key: item,
-          success:()=>{
-            wx.hideLoading({
-              complete: (res) => {
-                wx.showModal({
-                  showCancel:false,
-                  title:'Tips',
-                  content:'清理完成',                  
-                });
-              },
-            });
-          }
-        })
+    let cache = wx.getStorageInfoSync().keys;
+    console.log(cache.includes("logs"));
+    if (cache.includes("logs")) {
+      for (let item of cache) {
+        if (item == 'logs') {
+          wx.removeStorage({
+            key: item,
+            success: () => {
+              wx.hideLoading({
+                complete: (res) => {
+                  wx.showModal({
+                    showCancel: false,
+                    title: 'Tips',
+                    content: '清理完成',
+                  });
+                },
+              });
+            }
+          })
+        }
       }
-      
+    } else {
+      setTimeout(() => {
+        wx.hideLoading({
+          complete: (res) => {
+            wx.showModal({
+              showCancel: false,
+              title: 'Tips',
+              content: '清理完成',
+            });
+          },
+        });
+      }, 1500);
     }
   },
   //登录状态
@@ -171,17 +185,17 @@ Page({
     }
   },
   //退出登录
-  quit:()=>{
-    let that=this;
+  quit: () => {
+    let that = this;
     wx.removeStorage({
       key: 'openId',
-      success:res=>{
+      success: res => {
         wx.showModal({
-          showCancel:false,
-          title:'提示',
-          content:'登出成功',
-          success:res=>{
-            if(res.confirm){
+          showCancel: false,
+          title: '提示',
+          content: '登出成功',
+          success: res => {
+            if (res.confirm) {
               that.onLoad();
             }
           }
