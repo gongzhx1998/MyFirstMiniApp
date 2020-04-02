@@ -203,4 +203,10 @@ Page({
       }
     })
   },
+  //设置
+  settings:function(){
+    wx.openSetting({
+      complete: (res) => {},
+    })
+  },
 })
