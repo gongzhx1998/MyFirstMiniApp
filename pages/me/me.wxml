@@ -19,7 +19,7 @@
 
 	<view class="operation">
 		<!-- 微信设置 -->
-		<view bindtap="quit" class="settings flex">
+		<view bindtap="settings" class="settings flex">
 			<image src="/img/chilun.png"></image>
 			<text>打开设置</text>
 		</view>
