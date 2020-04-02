@@ -185,7 +185,7 @@ Page({
     }
   },
   //退出登录
-  quit: () => {
+  quit: function() {
     let that = this;
     wx.removeStorage({
       key: 'openId',
