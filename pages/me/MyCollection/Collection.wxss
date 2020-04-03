@@ -1,1 +1,26 @@
-/* pages/me/MyCollection/Collection.wxss */
+page{
+  background-color: e3e3e3;
+}
+.wrap{
+  width: 100%;  
+}
+.content-wrap{
+  width: 100%;
+  background-color: #FFF;
+  margin-bottom: 30rpx;
+}
+.content-head{
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.content-head image{
+  width: 50rpx;
+  height: 50rpx;
+  margin:0 20rpx 0 20rpx;
+}
+.content-body view{
+  text-indent: 30rpx;  
+}

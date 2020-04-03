@@ -1,5 +1,13 @@
 <view class="wrap">
   <view wx:for="{{initData}}" wx:key="Index">
-    <view>{{item}}</view>
+    <view wx:for="{{item}}" class="content-wrap" wx:key="Index">
+      <view class="content-head">
+        <image src="{{item.HeaderIMG}}"></image>
+        <text>{{item.Title}}</text>
+      </view>
+      <view class="content-body">
+        <view>{{item.Content}}</view>
+      </view>
+    </view>
   </view>
 </view>
