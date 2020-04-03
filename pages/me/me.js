@@ -209,35 +209,56 @@ Page({
       complete: (res) => {},
     });
   },
+  //查看我的收藏
   ViewCollection: function () {
     let openid = wx.getStorageSync('openId');
     let that = this;
-
+    if (openid == null | openid == '') {
+      wx.showModal({
+        showCancel: false,
+        title: 'Tips',
+        content: '未获取到账号信息，登录后重试！'
+      });
+      return;
+    }
     wx.request({
-        url: domainUrl + '/Work/ViewCollection',
-        data: {
-          'open_Id': openid
-        },
-        success: res => {
-          // console.log(res);
-          let temp=res.data.data;
-          if (res.data.msg == '获取成功') {
-            wx.navigateTo({
-                url: 'MyCollection/Collection',
-                events: {
-                  getdata: function (options) {
-                    console.log(options)
-                  }
-                },
-                success:res=>{
-                  res.eventChannel.emit('sendData',{data:temp})                  
-                }
-            });
-          }
+      url: domainUrl + '/Work/ViewCollection',
+      data: {
+        'open_Id': openid
+      },
+      success: res => {
+        let temp = res.data.data;
+        if (res.data.msg == '获取成功') {
+          wx.navigateTo({
+            url: 'MyCollection/Collection',
+            events: {
+              getdata: function (options) {
+                console.log(options)
+              }
+            },
+            success: res => {
+              res.eventChannel.emit('sendData', {
+                data: temp
+              })
+            }
+          });
+        } else if (res.data.data == '' || res.data.data == null) {
+          wx.showModal({
+            showCancel: false,
+            title: 'Tips',
+            content: '未获取到收藏的文章！'
+          });
+        }
       },
       fail: err => {
         console.log(err)
       }
     });
-},
+  },
+  lookMyselef: function () {
+    let base = wx.getStorageSync("BaseUserInfo");
+    // wx.navigateTo({
+    //   url: 'MyBaseInfo/MyBaseInfo?info=',
+    // });
+  },
 })

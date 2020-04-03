@@ -1,5 +1,5 @@
 page{
-  background-color: e3e3e3;
+  background-color: #e3e3e3;
 }
 .wrap{
   width: 100%;  
@@ -8,12 +8,13 @@ page{
   width: 100%;
   background-color: #FFF;
   margin-bottom: 30rpx;
+  padding-bottom: 30rpx;
 }
 .content-head{
   display: flex;
   flex-direction: row;
   font-weight: bold;
-  margin-top: 30rpx;
+  padding-top: 30rpx;
   margin-bottom: 30rpx;
 }
 .content-head image{

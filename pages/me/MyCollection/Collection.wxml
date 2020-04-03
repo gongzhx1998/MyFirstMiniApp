@@ -1,6 +1,6 @@
-<view class="wrap">
-  <view wx:for="{{initData}}" wx:key="Index">
-    <view wx:for="{{item}}" class="content-wrap" wx:key="Index">
+<view class="wrap" wx:if="{{initData!=''}}">
+  <view wx:for="{{initData}}" wx:key="Index" bindtap="navgateDetail" data-NewsId="{{item.NewsId}}">
+    <view class="content-wrap">
       <view class="content-head">
         <image src="{{item.HeaderIMG}}"></image>
         <text>{{item.Title}}</text>
@@ -10,4 +10,7 @@
       </view>
     </view>
   </view>
+</view>
+<view wx:else>
+  <text>空空如也~~</text>
 </view>

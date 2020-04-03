@@ -20,12 +20,12 @@ Page({
           let temp = '';
           temp = item.Content.substr(0, 30);
           item.Content = temp+'...';          
-        }
+        }        
       }
-      fn(e)
+      fn(e);
       that.setData({
-        initData: e
-      })
+        initData: e.data
+      });
     });
   },
 
@@ -76,5 +76,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  navgateDetail:function(e){
+    let id=e.currentTarget.dataset.newsid;
+    console.log(id)
+    wx.navigateTo({
+      url: '../../temp/News/News-detail?id='+id,
+    });
   }
 })

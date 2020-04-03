@@ -15,7 +15,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log(typeof options.id)
+    let that = this;
+    let id = options.id;
+    wx.setStorageSync('DetailNewsId', id);
+    wx.request({
+      url: domainUrl + '/Work/AnyNews',
+      method: 'GET',
+      data: {
+        'NewsId': id
+      },
+      success: res => {
+        that.setData({
+          psot_data: res.data,
+          FavoritesCount: res.data.FavoritesCount
+        });
+      }
+    });
   },
   Collect: function (e) {
     let that = this;
@@ -70,30 +86,14 @@ Page({
    */
   onShow: function () {
     let that = this;
-    let eventChannel = this.getOpenerEventChannel();
-    // eventChannel.emit('acceptDataFromOpenedPage', { data: 'test' });
-    // eventChannel.emit('someEvent', { data: 'test' });
-    // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-    eventChannel.on('acceptDataFromOpenerPage', function (data) {
-      let e = data.data.data;
-      that.setData({
-        psot_data: e,
-        FavoritesCount: e.FavoritesCount
-      });
-      wx.request({
-        url: domainUrl + '/Work/UpdatePV',
-        method: 'POST',
-        data: {
-          'id': e.NewsId
-        },
-        success: res => {
-          
-        },
-        fail: err => {
-          console.log(err);
-        }
-      });
-    });    
+    let id= wx.getStorageSync('DetailNewsId');
+    wx.request({
+      url: domainUrl + '/Work/UpdatePV',
+      method: 'POST',
+      data: {
+        'id': id
+      }
+    });
   },
 
   /**

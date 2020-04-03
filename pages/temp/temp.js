@@ -48,36 +48,8 @@ Page({
   //点击新闻Content跳转
   post_item: e => {
     let id = e.currentTarget.dataset.newsid;
-    wx.request({
-      url: domainUrl + '/Work/AnyNews',
-      method: 'GET',
-      data: {
-        'NewsId': id
-      },
-      success: res => {
-        let nextViewData = res;
-        wx.navigateTo({
-          url: 'News/News-detail',
-          events: {
-            getData: function(option) {
-              console.log(option)
-            }
-          },
-          success: res => {            
-            res.eventChannel.emit('acceptDataFromOpenerPage', {
-              data: nextViewData
-            });
-          }
-        });
-      },
-      fail: err => {
-        wx.showToast({
-          title: '获取失败',
-          image: '/img/fail.png',
-          duration: 2500,
-          mask: true
-        });
-      }
+    wx.navigateTo({
+      url: 'News/News-detail?id='+id,
     });
   },
   GetValue: function(e) {
