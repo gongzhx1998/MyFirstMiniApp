@@ -14,8 +14,8 @@
 #TypeError: Cannot read property 'onLoad' of undefined
 #4月3号待解决
 #MyCollection页面没做完，申请作者功能没做
-#
-#
+#4月4号待解决
+#申请作者功能没做、MyBaseInfo页面做完
 #
 #
 #
