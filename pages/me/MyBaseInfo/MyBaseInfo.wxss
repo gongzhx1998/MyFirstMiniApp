@@ -1,1 +1,27 @@
-/* pages/me/MyBaseInfo/MyBaseInfo.wxss */
+page{
+  background-color: #e3e3e3;
+}
+.wrap .text{
+  text-Indent:1em;
+}
+.avatar,.nickName,.gender,.city{  
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30rpx;
+  background-color: #FFF;
+}
+.avatar{
+  margin-top: 20rpx;
+  height: 180rpx;
+}
+.avatar image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 6px;    
+}
+.avatar view,.gender>view,.nickName>view,.city >view{
+  width: 33.333333333333333333%;
+}

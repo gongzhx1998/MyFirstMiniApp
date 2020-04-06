@@ -67,13 +67,6 @@
 				},
 				{
 					"id": -1,
-					"name": "map",
-					"pathName": "pages/map/map",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "a",
 					"pathName": "pages/a/a",
 					"query": "",

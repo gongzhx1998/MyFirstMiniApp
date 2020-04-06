@@ -84,7 +84,6 @@ Page({
       title: '正在清理',
     });
     let cache = wx.getStorageInfoSync().keys;
-    console.log(cache.includes("logs"));
     if (cache.includes("logs")) {
       for (let item of cache) {
         if (item == 'logs') {
@@ -228,6 +227,7 @@ Page({
       },
       success: res => {
         let temp = res.data.data;
+        console.log(res)
         if (res.data.msg == '获取成功') {
           wx.navigateTo({
             url: 'MyCollection/Collection',
@@ -255,10 +255,25 @@ Page({
       }
     });
   },
+  //点击头像栏，查看修改个人信息
   lookMyselef: function () {
     let base = wx.getStorageSync("BaseUserInfo");
-    // wx.navigateTo({
-    //   url: 'MyBaseInfo/MyBaseInfo?info=',
-    // });
+    let openId=wx.getStorageSync('openId');
+    if((openId==''||openId==null)||(base==null||base=='')){
+      wx.showModal({
+        showCancel:false,
+        title:'Tips',
+        content: '未获取到你得信息，重新登录后重试！'
+      });
+      return;
+    }
+    wx.navigateTo({
+      url: 'MyBaseInfo/MyBaseInfo',
+    });
+  },
+  askFor:function(){
+    wx.navigateTo({
+      url: 'author/author',
+    });
   },
 })

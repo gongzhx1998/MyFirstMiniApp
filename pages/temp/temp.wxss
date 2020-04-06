@@ -81,6 +81,7 @@ input{
 .post-header-text{
   font-size: 36rpx;
   color: #333;
+  margin-right: 20rpx;
 }
 .post-title{
   font-weight: bold;

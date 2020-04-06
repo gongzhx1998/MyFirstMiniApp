@@ -77,9 +77,9 @@ Page({
   onShareAppMessage: function () {
 
   },
+  //跳转到文章详情
   navgateDetail:function(e){
     let id=e.currentTarget.dataset.newsid;
-    console.log(id)
     wx.navigateTo({
       url: '../../temp/News/News-detail?id='+id,
     });

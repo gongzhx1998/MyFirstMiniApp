@@ -1,0 +1,40 @@
+<view class="wrap">
+	<view class="baseinfo">
+		<!-- 头像 -->
+		<view class="avatar">
+			<view class="text">头像</view>
+			<view></view>
+			<view>
+				<image src="{{userInfo.avatarUrl}}"></image>
+			</view>
+		</view>
+    <!-- 名字 -->
+    <view class="nickName">
+      <view class="text">名字</view>
+      <view></view>
+      <view>{{userInfo.nickName}}</view>
+    </view>
+		<!-- 性别 -->
+		<view class="gender">
+			<view class="text">性别</view>
+			<view></view>
+			<view>
+				<view wx:if="{{userInfo.gender==1}}" class="sex">
+					<text>男</text>
+				</view>
+				<view wx:elif="{{userInfo.gender==2}}" class="sex">
+					<text>女</text>
+				</view>
+				<view wx:else class="sex">
+					<text>未知</text>
+				</view>
+			</view>
+		</view>
+    <!-- 地区 -->
+    <view class="city">
+      <view class="text">地区</view>
+      <view></view>
+      <view>{{userInfo.province}}</view>
+    </view>
+	</view>
+</view>

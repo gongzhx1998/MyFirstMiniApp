@@ -1,0 +1,20 @@
+<view>
+	<view class="input-wrap">
+		<view style="padding-right:30rpx;"><text>手机号</text></view>
+		<input placeholder="请输入手机号" type="number" bindblur="phoneNumber"></input>
+	</view>
+	<view class="input-wrap">
+		<text>身份证号</text>
+		<input placeholder="请输入身份证号" type="idcard" bindblur="idcard"></input>
+	</view>
+</view>
+
+<view class="chenckBoxWrap">
+	<checkbox-group bindchange="checkBoxChange">
+		<checkbox checked="{{checked}}">我同意注册条款</checkbox>
+	</checkbox-group>
+</view>
+
+<view class="wrap" wx:if="{{check}}">
+	<button size="mini" type="primary" bindtap="bingWx">提交</button>
+</view>

@@ -14,6 +14,7 @@
 <view class="post-Container" wx:for="{{psot_data}}" wx:key="Index">
   <view class="post-header">
     <image src="{{item.HeaderIMG}}" class="post-header-image"></image>
+    <text class="post-header-text">{{item.NewsAuthor.AuthorName}}</text>
     <text class="post-header-text">{{item.Time}}</text>
   </view>
   <text class="post-title">{{item.Title}}</text>

@@ -1,15 +1,19 @@
 page{
+  width: 100%;
   background-color: #e3e3e3;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 .wrap{
   width: 100%;
   background-color: #FFF;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 .LoginBtn{
   width: 100%;
   height: 100rpx;
-  border-bottom: 0.5rpx solid #333;
+  /* border-bottom: 0.5rpx solid #333; */
   background-color: #FFF;
 }
 .LoginBtn button{
@@ -25,20 +29,19 @@ page{
   flex-direction: row;
   align-items: center;
 }
+.person>view{
+  width: 33.333333333333333333%;
+}
 .headImg{
   width: 150rpx;
   height: 150rpx;
   border-radius: 6px;
-  vertical-align: center;
+  /* vertical-align: center; */
 }
 .nickName{
-  width: 33.333333333%;
   display: flex;
   flex-direction: column;
-  /* margin-left:180rpx; */
-}
-.img-wrap{
-  width: 33.333333333%;
+  align-items: center;
 }
 .operation{
   width: 100%;
@@ -50,7 +53,8 @@ page{
   height: 70rpx;
   background-color: #FFF;
   margin-bottom: 30rpx;
-  padding-left: 20rpx;  
+  padding-left: 20rpx; 
+  box-sizing: border-box; 
 }
 .operation view text{
   line-height: 70rpx;

@@ -65,25 +65,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
     let that = this;
     wx.request({
       url: domainUrl + '/Work/GetNews',
       method:'POST',
-      success: res => {      
+      header:{
+        "content-type":'application/json'
+      },
+      success: res => {    
+        console.log(res);
         let post_data = res.data;
         that.setData({
           psot_data: post_data
@@ -97,6 +87,20 @@ Page({
         });
       }
     });
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    
   },
 
   /**
@@ -117,7 +121,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    this.onShow();
+    this.onLoad();
   },
 
   /**
