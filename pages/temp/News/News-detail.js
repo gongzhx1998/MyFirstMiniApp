@@ -15,10 +15,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(typeof options.id)
+    // console.log(options)
     let that = this;
     let id = options.id;
     wx.setStorageSync('DetailNewsId', id);
+    wx.setStorageSync('title', options.title);
     wx.request({
       url: domainUrl + '/Work/AnyNews',
       method: 'GET',
@@ -79,7 +80,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let title=wx.getStorageSync('title');
+    wx.setNavigationBarTitle({
+      title: title,
+    });
   },
   /**
    * 生命周期函数--监听页面显示
@@ -100,7 +104,8 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    wx.removeStorageSync('title');
+    wx.removeStorageSync('DetailNewsId');
   },
 
   /**

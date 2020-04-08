@@ -1,65 +1,81 @@
 let app = getApp();
 const domainUrl = app.globalData.url;
-let js = require('../../js/public.js')
+let js = require('../../js/public.js');
+let count=0;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     psot_data: [],
-    items: [{
-        'name': 'zh-CN',
-        'value': "中国"
-      },
-      {
-        'name': 'USA',
-        value: '美国'
-      },
-      {
-        name: 'ENG',
-        value: '英国'
-      },
-      {
-        name: 'JP',
-        value: '日本'
-      }
-    ],
-    nodes1: [{
-      name: 'br'
-    }],
-    inputvalue: '',
-    sad: [
-      ['脊椎动物', '无脊椎动物'],
-      ['水下生物', '陆地生物']
-    ],
-    sab: ['男', '女'],
-  },
-  checkboxChange: function(e) {
-    console.log(e);
-  },
-  long: function() {
-    wx.showActionSheet({
-      itemList: ['a', 'b', 'c'],
-      success: res => {
-        console.log(res);
-      }
-    });
+    IsCacelShow:false,
+    IsBodyShow:true,
+    IsSearchViewShow:false,
+    Searched_data:[],
+    statusBarHeight:app.globalData.statusBarHeight,
+    header_input_height:app.globalData.header_input_height,
+    page_header_height:app.globalData.page_header_height
   },
   //点击新闻Content跳转
   post_item: e => {
     let id = e.currentTarget.dataset.newsid;
+    let title=e.currentTarget.dataset.newstitle;
     wx.navigateTo({
-      url: 'News/News-detail?id='+id,
+      url: 'News/News-detail?id='+id+'&title='+title,
     });
   },
-  GetValue: function(e) {
+  // 当上方搜索框获取焦点时隐藏页面，显示搜索页
+  OnFocus:function(e){
     this.setData({
-      inputvalue: e.detail.value
-    });
-    console.log(e);
+      IsBodyShow:false,
+      IsSearchViewShow:true,
+      IsCacelShow:true,
+      Searched_data:[]
+    });    
   },
-  multi: function(e) {
-    console.log(e);
+  //返回News界面
+  OnIcontap:function(){
+    this.setData({
+      IsBodyShow:true,
+      IsSearchViewShow:false,
+      IsCacelShow:false
+    });
+  },
+  //搜索
+  OnBlur:function(e){
+    let str=e.detail.value;
+    this.GetAnyNewsByTitle(str);
+  },
+  OnConfirm:function(e){
+    let str=e.detail.value;
+    this.GetAnyNewsByTitle(str);
+  },
+  GetAnyNewsByTitle:function(str){
+    let that=this;
+    if(str==''||str==null){
+      wx.showModal({
+        content:'输入内容在搜索',
+        showCancel:false,
+        title:'Tips'
+      });
+      return;
+    }
+    wx.request({
+      url: domainUrl+'/Work/GetAnyNewsByTitle',
+      method:"POST",
+      data:{
+        'str':str
+      },
+      success:res=>{
+        let data=res.data;
+        if(data==null||data.length==0){          
+          return;
+        }        
+        that.setData({
+          Searched_data:data
+        });
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -69,11 +85,14 @@ Page({
     wx.request({
       url: domainUrl + '/Work/GetNews',
       method:'POST',
+      data:{
+        'skip':0,
+        "take":2
+      },
       header:{
         "content-type":'application/json'
       },
       success: res => {    
-        console.log(res);
         let post_data = res.data;
         that.setData({
           psot_data: post_data
@@ -93,14 +112,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+      
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    
+  
   },
 
   /**
@@ -122,13 +141,45 @@ Page({
    */
   onPullDownRefresh: function() {
     this.onLoad();
+    count=0;
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    count+=2;
+    let that = this;
+    wx.request({
+      url: domainUrl + '/Work/GetNews',
+      method:'POST',
+      data:{
+        'skip':count,
+        "take":2
+      },     
+      success: res => {
+        if(res.data==null||res.data.length==0){
+          wx.showToast({
+            title: '已经到底啦~',
+            duration:2000,
+            mask:true,
+            icon:'success'
+          });
+          return;
+        }
+        let post_data = that.data.psot_data.concat(res.data);
+        that.setData({
+          psot_data: post_data
+        });
+      },
+      fail: err => {
+        wx.showToast({
+          title: 'fail',
+          image: '/img/fail.png',
+          duration: 2500
+        });
+      }
+    });
   },
 
   /**

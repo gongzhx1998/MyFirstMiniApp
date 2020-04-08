@@ -36,9 +36,30 @@ App({
     let isDebug=false;
     let _url = isDebug ? 'http://api.legschina.com' : 'https://legschina.com' ;
     this.globalData.url=_url;
+    //获取高度
+    let menu=wx.getMenuButtonBoundingClientRect();
+    let that=this;
+    console.log(menu)
+    wx.getSystemInfo({
+      complete: (res) => {
+        
+        let pixelRatio=res.pixelRatio;
+        console.log(pixelRatio)
+        let top=(res.statusBarHeight+menu.top)/pixelRatio;
+        let height=(menu.height+menu.top+menu.bottom+res.statusBarHeight)/pixelRatio;
+        let height1=menu.height/pixelRatios;
+        
+        that.globalData.header_input_height=height1-2;
+        that.globalData.page_header_height=height;
+        that.globalData.statusBarHeight=top;
+      },
+    }); 
   },
   globalData: {
     userInfo: null,
-    url: null
+    url: null,
+    statusBarHeight:0,
+    header_input_height:0,
+    page_header_height:0
   },
 })

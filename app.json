@@ -21,7 +21,7 @@
     "navigationBarBackgroundColor": "#43ad7f",
     "navigationBarTitleText": "🐂🍺",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "list": [

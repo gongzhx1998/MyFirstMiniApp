@@ -2,9 +2,26 @@
 /* .scroll-wrap-x{
   width: 100%;
 } */
-input{
-  margin-top: 10px;
-  border: 0.5px solid black;
+.page-header{
+  width: 100%;
+  /* height: 128rpx; */
+  background-color: #43ad7f;
+  /* position: fixed;
+  top: 0;
+  left: 0; */
+}
+.header-input{
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px #333 solid;
+  border-radius: 50rpx;
+  margin-left: 100rpx;
+  box-sizing: border-box;
+}
+.SearchView{
+  width: 100%;
 }
 .div{
   width: 100%;
@@ -13,50 +30,6 @@ input{
 .div image{
   width: 100%;
   height: 600rpx;
-}
-.section view{
-  display: flex;
-}
-.bgc-green{
-  background-color: green;
-  width: 300rpx;
-  height: 150rpx;
-}
-.flex-wrap{
-  align-items: center;
-  flex-direction: column;
-}
-.bgc-red{
-  background-color: red;
-  width: 300rpx;
-  height: 150rpx;
-}
-.bgc-blue{
-  background-color: blue;
-  width: 300rpx;
-  height: 150rpx;
-  text-align: center;
-}
-.scroll-wrap{
-  height: 150px;
-  width: 500rpx;
-}
-.scroll-wrap .bgc-blue,.scroll-wrap .bgc-green,.scroll-wrap .bgc-red{
-  height: 300px;
-  width: 500px;
-  /* text-align: center; */
-  /* line-height: 500px; */
-}
-.view{
-  height: 50px;
-  width: 50px;
-  background-color:rgba(26, 173, 25, 0.7);
-
-}
-#scroll-wrap view{
-  display: flex;
-  width: 100%;
-  height: 350rpx;
 }
 .post-Container{
   display: flex;

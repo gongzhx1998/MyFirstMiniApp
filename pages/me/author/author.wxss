@@ -1,6 +1,7 @@
 /* pages/me/author/author.wxss */
 page{
   background-color: #e3e3e3;
+  box-sizing: border-box;
 }
 .wrap,.input-wrap{
   display: flex;
@@ -22,6 +23,7 @@ page{
   display: flex;
   flex-direction: row;
   align-items: center;
+  box-sizing: border-box;
   padding-left: 20rpx;
   background-color: #FFF;
   width: 100%;
