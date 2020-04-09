@@ -34,20 +34,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let that=this;
-    let menu=wx.getMenuButtonBoundingClientRect();
-    console.log(menu)
-    wx.getSystemInfo({
-      complete: (res) => {
-        console.log(res)
-        let top=res.statusBarHeight+menu.top;
-        let height=menu.height+menu.top+menu.bottom+res.statusBarHeight;
-        let height1=menu.height;
-        console.log("navigation"+height);
-        console.log("jiaonang"+height1);
-        console.log("top"+top)
-      },
-    });
+  
   },
 
   /**

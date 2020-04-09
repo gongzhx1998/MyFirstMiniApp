@@ -39,19 +39,13 @@ App({
     //获取高度
     let menu=wx.getMenuButtonBoundingClientRect();
     let that=this;
-    console.log(menu)
     wx.getSystemInfo({
-      complete: (res) => {
-        
-        let pixelRatio=res.pixelRatio;
-        console.log(pixelRatio)
-        let top=(res.statusBarHeight+menu.top)/pixelRatio;
-        let height=(menu.height+menu.top+menu.bottom+res.statusBarHeight)/pixelRatio;
-        let height1=menu.height/pixelRatios;
-        
-        that.globalData.header_input_height=height1-2;
-        that.globalData.page_header_height=height;
-        that.globalData.statusBarHeight=top;
+      complete: (res) => {      
+        let Navigation_height=(menu.top-res.statusBarHeight)*2+menu.height+res.statusBarHeight;
+        let height1=menu.height-2;        
+        that.globalData.header_input_height=height1;
+        that.globalData.page_header_height=Navigation_height;
+        that.globalData.statusBarHeight=res.statusBarHeight;
       },
     }); 
   },

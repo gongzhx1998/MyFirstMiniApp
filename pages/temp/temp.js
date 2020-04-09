@@ -1,6 +1,5 @@
 let app = getApp();
 const domainUrl = app.globalData.url;
-let js = require('../../js/public.js');
 let count=0;
 Page({
   /**

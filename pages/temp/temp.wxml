@@ -1,15 +1,17 @@
 <!-- NavigationBar -->
-<view class="page-header" style="height:{{page_header_height}}px;">
-  <!-- 填充statusBargaodu -->
-  <view style="height:{{statusBarHeight}}px;width:100%;"></view>
-	<view class="header-input" style="height:{{header_input_height}}px;">
-		<icon type="search" size="23"></icon>
-		<!-- bindblur="OnBlur" -->
-		<input placeholder="键入搜索" bindfocus="OnFocus"  bindconfirm="OnConfirm" confirm-type="done"
-		 adjust-position="false"></input>
-		<icon type="cancel" size="23" color="#333" wx:if="{{IsCacelShow}}" catchtap="OnIcontap"></icon>
+<view style="height:{{page_header_height}}px;">
+	<view class="page-header" style="height:{{page_header_height}}px;">
+		<!-- 填充statusBargaodu -->
+		<view style="height:{{statusBarHeight}}px;width:100%;"></view>
+		<view class="header-input" style="height:{{header_input_height}}px;">
+			<icon type="search" size="23"></icon>
+			<!-- bindblur="OnBlur" -->
+			<input placeholder="键入搜索" bindfocus="OnFocus" bindconfirm="OnConfirm" confirm-type="done" adjust-position="false"></input>
+			<icon type="cancel" size="23" color="#333" wx:if="{{IsCacelShow}}" catchtap="OnIcontap"></icon>
+		</view>
 	</view>
 </view>
+
 <view class="body" wx:if="{{IsBodyShow}}">
 	<!-- 轮播模块 -->
 	<swiper class="div" indicator-dots="true" autoplay="true" interval="3500">
@@ -43,6 +45,8 @@
 		</view>
 	</view>
 </view>
+
+
 <!-- 搜索的页面 -->
 <view class="SearchView" wx:if="{{IsSearchViewShow}}">
 	<view class="post-Container" wx:for="{{Searched_data}}" wx:key="Index">

@@ -4,11 +4,12 @@
 } */
 .page-header{
   width: 100%;
-  /* height: 128rpx; */
   background-color: #43ad7f;
-  /* position: fixed;
+  z-index: 1;
+  position: fixed;  
   top: 0;
-  left: 0; */
+  left: 0;
+
 }
 .header-input{
   width: 50%;
@@ -17,7 +18,8 @@
   align-items: center;
   border: 1px #333 solid;
   border-radius: 50rpx;
-  margin-left: 100rpx;
+  vertical-align: middle;
+  margin:0 auto;
   box-sizing: border-box;
 }
 .SearchView{
@@ -26,6 +28,8 @@
 .div{
   width: 100%;
   height: 600rpx;
+  box-sizing: border-box;
+  z-index: 2;
 }
 .div image{
   width: 100%;
