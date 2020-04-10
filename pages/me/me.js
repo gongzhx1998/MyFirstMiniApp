@@ -119,6 +119,8 @@ Page({
   },
   //登录状态
   singIn: function (e) {
+    let encryptedData;
+    let iv;
     let that = this;
     wx.login({
       success: res => {
@@ -144,6 +146,8 @@ Page({
             wx.getUserInfo({
               withCredentials: true,
               success: function (userRes) {
+                iv=userRes.iv;
+                encryptedData=userRes.encryptedData;
                 wx.request({
                   url: domainUrl + '/wxLogin/OnCheck',
                   method: 'POST',
@@ -163,7 +167,22 @@ Page({
                 console.log(err);
               },
               complete: () => {
-
+                let sessionId=wx.getStorageSync("SessionId")
+                wx.request({
+                  url: domainUrl+'/wxLogin/DecodeEncryptedDataBySessionId',
+                  method:'POST',
+                  data:{
+                    'sessionId':sessionId,
+                    'iv':iv,
+                    'encryptedData':encryptedData
+                  },
+                  success:res=>{
+                    console.log(res);
+                  },
+                  fail:err=>{
+                    console.log(err)
+                  }
+                });
               }
             });
           }
