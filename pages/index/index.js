@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp();
 const domainUrl = app.globalData.url;
-
+let utils=require('../../utils/util.js')
 Page({
   data: {
     array: [1, 2, 3, 4, 5, 99, 666, -1],
@@ -49,7 +49,8 @@ Page({
         key: '女',
         value: 1
       }
-    ]
+    ],
+    ImgSrc:''
   },
   TakePhoto: function() {
     var that = this;
@@ -157,19 +158,19 @@ Page({
     }
   },
   onLoad: function() {
-    this.ctx = wx.createCameraContext();
-    wx.getSetting({
-      success: res => {
-        if (!res.authSetting["scope.userInfo"]) {
-          wx.authorize({
-            scope: 'scope.userInfo',
-            success: res => {
-              console.log(res);
-            }
-          });
-        }
+    let that=this;
+    wx.request({
+      url: domainUrl+'/File/GetImg',
+      success:res=>{
+        let base64=wx.arrayBufferToBase64(res.data.headImg);
+        that.setData({
+          ImgSrc:base64
+        });
       }
     });
+
+
+    this.ctx = wx.createCameraContext();    
   },
   //下载pic
   down: function() {
@@ -194,16 +195,22 @@ Page({
       }
     });
   },
+  //上传
   uploadFile: function() {
     wx.chooseImage({
       success: function(res) {
         console.log(res);
-        const path = res.tempFilePaths[0];
+        let path = res.tempFilePaths[0];
         wx.uploadFile({
-          url: 'https://legschina.com/',
-          method: 'get',
+          url: domainUrl+'/File/UploadFile',
+          header:{
+            "content-type":"multipart/form-data"
+          },
           filePath: path,
-          name: 'a.png',
+          name: 'file',
+          formData:{
+            'filePath':path
+          },  
           success: function(res) {
             console.log(res);
           },
@@ -216,13 +223,11 @@ Page({
   },
   //获取Token
   getToken: () => {
-    wx.request({
-      url: domainUrl + '/wxLogin/GetToken',
-      method: "POST",
-      success: res => {
-        console.log(res);
-      }
-    });
+    let url= domainUrl + '/wxLogin/GetToken';
+    let callBack=function(res){
+      console.log(res)
+    }
+    utils.HttpRequest(url,'POST',null,callBack);
   },
   openDoc: () => {
     wx.downloadFile({
@@ -258,5 +263,31 @@ Page({
       ],
     });
 
+  },
+  // 下发模版消息
+  OpenCategory1:function(){
+    wx.requestSubscribeMessage({
+      tmplIds: ['lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE'],
+    });
+    utils.getToken();
+    let token=wx.getStorageSync('access_token');   
+    let url='https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token='+token;
+    let TempData={
+      'name9':{'value':'宫志鑫'},
+      'thing2':{'value':'申请作者'},
+      'date4':{'value':'2020-04-18'},
+      'phrase16':{'value':'审核完成'},
+      'thing19':{'value':'审核通过'}
+    };
+    let data={
+      'touser':'oVTwL41RinDRRX7gLZo7nGkcdYpI',
+      'template_id':'lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE',
+      'data':TempData
+    }
+    let callback=function(res){
+      console.log(res)
+    }
+    utils.HttpRequest(url,"POST",data,callback);
+    wx.removeStorageSync('access_token');
   },
 });

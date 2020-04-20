@@ -18,23 +18,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //页面加载时，从缓存获取openId，获取不到意味当前没有登录
-    let openid = wx.getStorageSync('openId');
-    if (openid != '' && openid != null) {
-      //获取到openId设置页面上的头像、网名
-      this.setUserData();
-    } else {
-      this.setData({
-        IsLogin: false
-      });
-    }
+    let that = this;
+    wx.checkSession({
+      success: res => {
+        // console.log(res);
+        //页面加载时，从缓存获取openId，获取不到意味当前没有登录
+        let openid = wx.getStorageSync('openId');
+        if (openid != '' && openid != null) {
+          //获取到openId设置页面上的头像、网名
+          this.setUserData();
+        } else {
+          this.setData({
+            IsLogin: false
+          });
+        }
+      },
+      fail: err => {
+        wx.showModal({
+          showCancel: false,
+          title: 'Tips',
+          content: '未获取到你的账号信息，请重新登录~',
+          success: res => {
+            if (res.confirm) {
+              that.removeStorageSync('openId');
+              that.removeStorageSync('SessionId');
+              that.setData({
+                IsLogin: false
+              });
+            }
+          }
+        });
+      },
+      complete: (res) => {},
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -146,8 +169,8 @@ Page({
             wx.getUserInfo({
               withCredentials: true,
               success: function (userRes) {
-                iv=userRes.iv;
-                encryptedData=userRes.encryptedData;
+                iv = userRes.iv;
+                encryptedData = userRes.encryptedData;
                 wx.request({
                   url: domainUrl + '/wxLogin/OnCheck',
                   method: 'POST',
@@ -167,19 +190,19 @@ Page({
                 console.log(err);
               },
               complete: () => {
-                let sessionId=wx.getStorageSync("SessionId")
+                let sessionId = wx.getStorageSync("SessionId")
                 wx.request({
-                  url: domainUrl+'/wxLogin/DecodeEncryptedDataBySessionId',
-                  method:'POST',
-                  data:{
-                    'sessionId':sessionId,
-                    'iv':iv,
-                    'encryptedData':encryptedData
+                  url: domainUrl + '/wxLogin/DecodeEncryptedDataBySessionId',
+                  method: 'POST',
+                  data: {
+                    'sessionId': sessionId,
+                    'iv': iv,
+                    'encryptedData': encryptedData
                   },
-                  success:res=>{
+                  success: res => {
                     console.log(res);
                   },
-                  fail:err=>{
+                  fail: err => {
                     console.log(err)
                   }
                 });
@@ -207,13 +230,14 @@ Page({
     let that = this;
     wx.removeStorage({
       key: 'openId',
-      success: res => {
+      success: () => {
         wx.showModal({
           showCancel: false,
           title: '提示',
           content: '登出成功',
           success: res => {
             if (res.confirm) {
+              wx.removeStorageSync("SessionId");
               that.onLoad();
             }
           }
@@ -246,7 +270,6 @@ Page({
       },
       success: res => {
         let temp = res.data.data;
-        console.log(res)
         if (res.data.msg == '获取成功') {
           wx.navigateTo({
             url: 'MyCollection/Collection',
@@ -277,11 +300,11 @@ Page({
   //点击头像栏，查看修改个人信息
   lookMyselef: function () {
     let base = wx.getStorageSync("BaseUserInfo");
-    let openId=wx.getStorageSync('openId');
-    if((openId==''||openId==null)||(base==null||base=='')){
+    let openId = wx.getStorageSync('openId');
+    if ((openId == '' || openId == null) || (base == null || base == '')) {
       wx.showModal({
-        showCancel:false,
-        title:'Tips',
+        showCancel: false,
+        title: 'Tips',
         content: '未获取到你得信息，重新登录后重试！'
       });
       return;
@@ -290,7 +313,7 @@ Page({
       url: 'MyBaseInfo/MyBaseInfo',
     });
   },
-  askFor:function(){
+  askFor: function () {
     wx.navigateTo({
       url: 'author/author',
     });

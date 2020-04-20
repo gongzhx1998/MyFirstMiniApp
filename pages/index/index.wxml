@@ -1,6 +1,6 @@
 <scroll-view scroll-x="true" style="width:100%;height:350px;" class="scr-x">
   <view class="bgc_red">
-    <image show-menu-by-longpress="true" src="../../img/meinv.png" catchtap="viewImg"></image>
+    <image show-menu-by-longpress="true" src="data:image/png;base64,{{ImgSrc}}" catchtap="viewImg"></image>
   </view>
   <view class="bgc_green">
     <image src="../../img/canon.png"></image>
@@ -16,6 +16,7 @@
 <button type="primary" bindtap="uploadFile">上传图片</button>
 <button type="primary" bindtap="getToken">获取Token</button>
 <button type="warn" bindtap="openDoc">openDoc</button>
+<button bindtap="OpenCategory">获取模版列表</button>
 
 
 <!-- 

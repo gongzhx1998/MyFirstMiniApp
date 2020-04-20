@@ -1,6 +1,7 @@
 <view class="post-Container">
   <view class="post-header">
-    <image src="{{psot_data.HeaderIMG}}" class="post-header-image"></image>
+    <image src="{{psot_data.NewsAuthor.Avatar}}" class="post-header-image"></image>
+    <text>{{psot_data.NewsAuthor.AuthorName}}</text>
     <text class="post-header-text">{{psot_data.Time}}</text>
   </view>
   <view class="post-title">

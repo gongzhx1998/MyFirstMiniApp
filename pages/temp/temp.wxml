@@ -3,11 +3,14 @@
 	<view class="page-header" style="height:{{page_header_height}}px;">
 		<!-- 填充statusBargaodu -->
 		<view style="height:{{statusBarHeight}}px;width:100%;"></view>
-		<view class="header-input" style="height:{{header_input_height}}px;">
-			<icon type="search" size="23"></icon>
-			<!-- bindblur="OnBlur" -->
-			<input placeholder="键入搜索" bindfocus="OnFocus" bindconfirm="OnConfirm" confirm-type="done" adjust-position="false"></input>
-			<icon type="cancel" size="23" color="#333" wx:if="{{IsCacelShow}}" catchtap="OnIcontap"></icon>
+		<view class="header_input_wrap">
+			<button size="mini" plain="true" catchtap="AddNews">+</button>
+			<view class="header-input" style="height:{{header_input_height}}px;">
+				<icon type="search" size="23"></icon>
+				<!-- bindblur="OnBlur" -->
+				<input placeholder="键入搜索" bindfocus="OnFocus" bindconfirm="OnConfirm" confirm-type="done" adjust-position="false"></input>
+				<icon type="cancel" size="23" color="#333" wx:if="{{IsCacelShow}}" catchtap="OnIcontap"></icon>
+			</view>
 		</view>
 	</view>
 </view>
@@ -28,7 +31,7 @@
 	<!-- 新闻列表 -->
 	<view class="post-Container" wx:for="{{psot_data}}" wx:key="Index">
 		<view class="post-header">
-			<image src="{{item.HeaderIMG}}" class="post-header-image"></image>
+			<image src="{{item.NewsAuthor.Avatar}}" class="post-header-image"></image>
 			<text class="post-header-text">{{item.NewsAuthor.AuthorName}}</text>
 			<text class="post-header-text">{{item.Time}}</text>
 		</view>

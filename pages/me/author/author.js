@@ -2,6 +2,7 @@
 let app = getApp();
 let domainUrl = app.globalData.url;
 let dataA = {};
+let utils = require('../../../utils/util.js')
 Page({
 
   /**
@@ -23,7 +24,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.requestSubscribeMessage({
+      tmplIds: ['lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE'],
+    });
   },
 
   /**
@@ -81,9 +84,9 @@ Page({
   phoneNumber: function (e) {
     let phoneNumber = e.detail.value;
     dataA.PhoneNumber = phoneNumber;
-    // console.log(phoneNumber)
   },
-  bingWx: function () {
+  bingWx: function () {    
+    let Auditresults;
     let baseInfo = wx.getStorageSync('BaseUserInfo');
     let open_Id = wx.getStorageSync('openId');
     dataA.Open_Id = open_Id;
@@ -98,34 +101,31 @@ Page({
         'a': dataA
       },
       success: res => {
-        if (res.data.success) {
-          wx.showModal({
-            showCancel: false,
-            title: 'Tips',
-            content: res.data.Msg,
-            success: res => {
-              console.log(res)
-              if (res.confirm) {
-                wx.switchTab({
-                  url: '../../me/me',                  
-                });
+        let YesOrNo=res.data.success;
+        Auditresults = res.data.Msg;
+        wx.showModal({
+          title: 'Tips',
+          content: Auditresults,
+          showCancel: false,
+          success: res => {
+            if (res.confirm) {
+              wx.switchTab({
+                url: '/pages/me/me',
+              });
+              //后台返回false直接return
+              if(!YesOrNo) {return;}
+              let url = domainUrl + '/wxLogin/TemplateMessage';
+              let reqData = {
+                'sessionId': wx.getStorageSync('SessionId'),
+                'Auditresults': Auditresults
               }
-            }
-          });
-        } else {
-          wx.showModal({
-            showCancel: false,
-            title: 'Tips',
-            content: res.data.Msg,
-            success: res => {
-              if (res.confirm) {
-                wx.switchTab({
-                  url: '../../me/me',                  
-                });
+              let callback = function (res) {
+                console.log(res)
               }
+              utils.HttpRequest(url, 'POST', reqData, callback);
             }
-          });
-        }
+          }
+        });
       },
       fail: err => {
         console.log(err);

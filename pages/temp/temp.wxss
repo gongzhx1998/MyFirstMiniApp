@@ -11,6 +11,18 @@
   left: 0;
 
 }
+.header_input_wrap{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header_input_wrap > button{
+  border: none;
+  width: 10rpx;
+  /* padding-left: 50rpx; */
+  margin: 0;
+  margin-left: 50rpx;
+}
 .header-input{
   width: 50%;
   display: flex;
@@ -18,8 +30,9 @@
   align-items: center;
   border: 1px #333 solid;
   border-radius: 50rpx;
-  vertical-align: middle;
-  margin:0 auto;
+  /* vertical-align: middle; */
+  /* margin:0 auto; */
+  margin-left: 70rpx;
   box-sizing: border-box;
 }
 .SearchView{

@@ -1,6 +1,7 @@
 let app = getApp();
 const domainUrl = app.globalData.url;
 let count=0;
+let utils=require("../../utils/util.js");
 Page({
   /**
    * 页面的初始数据
@@ -38,7 +39,7 @@ Page({
       IsBodyShow:true,
       IsSearchViewShow:false,
       IsCacelShow:false
-    });
+    });    
   },
   //搜索
   OnBlur:function(e){
@@ -91,7 +92,7 @@ Page({
       header:{
         "content-type":'application/json'
       },
-      success: res => {    
+      success: res => {
         let post_data = res.data;
         that.setData({
           psot_data: post_data
@@ -106,12 +107,18 @@ Page({
       }
     });
   },
-
+  AddNews:function(e){
+    wx.showToast({
+      title: '此功能正在开发中',
+      mask:true,
+      duration:2500
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
-      
+  onReady: function() {   
+
   },
 
   /**

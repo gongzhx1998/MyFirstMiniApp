@@ -30,14 +30,19 @@ App({
             }
           });
         }
+        else{
+          wx.authorize({
+            scope: 'scope.userInfo',
+          });
+        }
       }
     });
     //是否为调试状态
-    let isDebug=true;
+    let isDebug=false;
     let _url = isDebug ? 'http://api.legschina.com' : 'https://legschina.com' ;
     this.globalData.url=_url;
 
-    
+
     //获取高度
     let menu=wx.getMenuButtonBoundingClientRect();
     let that=this;
@@ -50,12 +55,27 @@ App({
         that.globalData.statusBarHeight=res.statusBarHeight;
       },
     }); 
+    //更新
+    let updateManager=wx.getUpdateManager();
+    updateManager.onUpdateReady(function(){
+      wx.showModal({
+        showCancel:false,
+        title:'版本更新',
+        content:'新版本已经准备好了，点击确定下载',
+        success:res=>{
+          if(res.confirm){
+            updateManager.applyUpdate();
+          }
+        }
+      });
+    });    
   },
+  
   globalData: {
     userInfo: null,
     url: null,
     statusBarHeight:0,
     header_input_height:0,
-    page_header_height:0
+    page_header_height:0,
   },
 })
