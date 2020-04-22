@@ -165,7 +165,7 @@ Page({
             console.log(err);
           },
           //效验
-          complete: com => {
+          complete: () => {
             wx.getUserInfo({
               withCredentials: true,
               success: function (userRes) {
@@ -179,7 +179,7 @@ Page({
                     rawData: userRes.rawData,
                     signnature: userRes.signature
                   },
-                  success: res => {
+                  success: res => {                    
                     console.log(res);
                     wx.setStorageSync('BaseUserInfo', userRes.userInfo);
                     that.setUserData();

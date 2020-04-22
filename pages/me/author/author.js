@@ -24,16 +24,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.requestSubscribeMessage({
-      tmplIds: ['lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE'],
-    });
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.requestSubscribeMessage({
+      tmplIds: ['lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE'],
+      success:res=>{
+        console.log(res)
+      }
+    });
   },
 
   /**
