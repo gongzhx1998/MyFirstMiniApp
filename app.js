@@ -29,8 +29,7 @@ App({
               }
             }
           });
-        }
-        else{
+        } else {
           wx.authorize({
             scope: 'scope.userInfo',
           });
@@ -38,43 +37,46 @@ App({
       }
     });
     //是否为调试状态
-    let isDebug=true;
-    let _url = isDebug ? 'http://api.legschina.com' : 'https://legschina.com' ;
-    this.globalData.url=_url;
+    let isDebug = true;
+    let _url = isDebug ? 'http://api.legschina.com' : 'https://legschina.com';
+    let _wssUrl = isDebug ? 'ws://api.legschina.com' : 'wss://legschina.com';
+    this.globalData.url = _url;
+    this.globalData.wssUrl = _wssUrl;
 
 
     //获取高度
-    let menu=wx.getMenuButtonBoundingClientRect();
-    let that=this;
+    let menu = wx.getMenuButtonBoundingClientRect();
+    let that = this;
     wx.getSystemInfo({
-      complete: (res) => {      
-        let Navigation_height=(menu.top-res.statusBarHeight)*2+menu.height+res.statusBarHeight;
-        let height1=menu.height-2;        
-        that.globalData.header_input_height=height1;
-        that.globalData.page_header_height=Navigation_height;
-        that.globalData.statusBarHeight=res.statusBarHeight;
+      complete: (res) => {
+        let Navigation_height = (menu.top - res.statusBarHeight) * 2 + menu.height + res.statusBarHeight;
+        let height1 = menu.height - 2;
+        that.globalData.header_input_height = height1;
+        that.globalData.page_header_height = Navigation_height;
+        that.globalData.statusBarHeight = res.statusBarHeight;
       },
-    }); 
+    });
     //更新
-    let updateManager=wx.getUpdateManager();
-    updateManager.onUpdateReady(function(){
+    let updateManager = wx.getUpdateManager();
+    updateManager.onUpdateReady(function () {
       wx.showModal({
-        showCancel:false,
-        title:'版本更新',
-        content:'新版本已经准备好了，点击确定下载',
-        success:res=>{
-          if(res.confirm){
+        showCancel: false,
+        title: '版本更新',
+        content: '新版本已经准备好了，点击确定下载',
+        success: res => {
+          if (res.confirm) {
             updateManager.applyUpdate();
           }
         }
       });
-    });    
+    });
   },
   globalData: {
     userInfo: null,
     url: null,
-    statusBarHeight:0,
-    header_input_height:0,
-    page_header_height:0,
+    wssUrl:null,
+    statusBarHeight: 0,
+    header_input_height: 0,
+    page_header_height: 0,
   },
 })

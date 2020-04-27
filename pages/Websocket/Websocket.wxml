@@ -1,0 +1,11 @@
+<view class="container">
+	<view class="text-wrap">
+
+	</view>
+	<view class="FormView">
+		<form report-submit="true">
+			<input type="text" class="MessageBox" placeholder="test" bindblur="gettext"></input>
+			<button form-type="submit" bindtap="sendMessage" type="primary" class="sendMessageButton">发送</button>
+		</form>
+	</view>
+</view> 

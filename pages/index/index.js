@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp();
 const domainUrl = app.globalData.url;
-let utils=require('../../utils/util.js')
+let utils = require('../../utils/util.js')
 Page({
   data: {
     array: [1, 2, 3, 4, 5, 99, 666, -1],
@@ -50,9 +50,9 @@ Page({
         value: 1
       }
     ],
-    ImgSrc:''
+    ImgSrc: ''
   },
-  TakePhoto: function() {
+  TakePhoto: function () {
     var that = this;
     var ipath = '';
     this.ctx.takePhoto({
@@ -111,7 +111,7 @@ Page({
   error(e) {
     console.log(e.detail)
   },
-  Scan: function(e) {
+  Scan: function (e) {
     wx.scanCode({
       success: res => {
         console.log(res);
@@ -119,36 +119,36 @@ Page({
     });
   },
   //判断switch是否是打开状态
-  Ischecked: function(e) {
+  Ischecked: function (e) {
     var a = this.data.status;
     this.setData({
       status: !a
     })
   },
-  radioChange: function(e) {
+  radioChange: function (e) {
     console.log(e);
   },
   //region选择器
-  CityChange: function(e) {
+  CityChange: function (e) {
     console.log(e);
     this.setData({
       pick_city: e.detail.value
     });
   },
   //date选择器change事件
-  DateChange: function(e) {
+  DateChange: function (e) {
     this.setData({
       pick_date: e.detail.value
     })
   },
   //Time change事件
-  TimeChange: function(e) {
+  TimeChange: function (e) {
     this.setData({
       pick_time: e.detail.value
     });
   },
   //性别选择器change事件
-  selectorChange: function(e) {
+  selectorChange: function (e) {
     for (var i = 0; i < this.data.range.length; ++i) {
       if (this.data.range[i].value == e.detail.value) {
         this.setData({
@@ -157,23 +157,23 @@ Page({
       }
     }
   },
-  onLoad: function() {
-    let that=this;
+  onLoad: function () {
+    let that = this;
     wx.request({
-      url: domainUrl+'/File/GetImg',
-      success:res=>{
-        let base64=wx.arrayBufferToBase64(res.data.headImg);
+      url: domainUrl + '/File/GetImg',
+      success: res => {
+        let base64 = wx.arrayBufferToBase64(res.data.headImg);
         that.setData({
-          ImgSrc:base64
+          ImgSrc: base64
         });
       }
     });
 
 
-    this.ctx = wx.createCameraContext();    
+    this.ctx = wx.createCameraContext();
   },
   //下载pic
-  down: function() {
+  down: function () {
     wx.downloadFile({
       url: domainUrl + '/img/abcd.png',
       success: res => {
@@ -196,23 +196,29 @@ Page({
     });
   },
   //上传
-  uploadFile: function() {
+  uploadFile: function () {
     wx.chooseImage({
-      success: function(res) {
-        console.log(res);
+      success: function (res) {        
         let path = res.tempFilePaths[0];
         wx.uploadFile({
-          url: domainUrl+'/File/UploadFile',
-          header:{
-            "content-type":"multipart/form-data"
+          url: domainUrl + '/File/UploadFile',
+          header: {
+            "content-type": "multipart/form-data"
           },
           filePath: path,
           name: 'file',
-          formData:{
-            'filePath':path
-          },  
-          success: function(res) {
-            console.log(res);
+          formData: {
+            'filePath': path
+          },
+          success: function (res) {
+            let result=JSON.parse(res.data);
+            let content="上传失败！";
+            if(result.Success) content="上传成功！";
+            wx.showModal({
+              showCancel:false,
+              title:'Tips',
+              content:content
+            });
           },
           fail: err => {
             console.log(err);
@@ -220,14 +226,6 @@ Page({
         });
       },
     });
-  },
-  //获取Token
-  getToken: () => {
-    let url= domainUrl + '/wxLogin/GetToken';
-    let callBack=function(res){
-      console.log(res)
-    }
-    utils.HttpRequest(url,'POST',null,callBack);
   },
   openDoc: () => {
     wx.downloadFile({
@@ -265,29 +263,44 @@ Page({
 
   },
   // 下发模版消息
-  OpenCategory1:function(){
+  OpenCategory1: function () {
     wx.requestSubscribeMessage({
       tmplIds: ['lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE'],
     });
     utils.getToken();
-    let token=wx.getStorageSync('access_token');   
-    let url='https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token='+token;
-    let TempData={
-      'name9':{'value':'宫志鑫'},
-      'thing2':{'value':'申请作者'},
-      'date4':{'value':'2020-04-18'},
-      'phrase16':{'value':'审核完成'},
-      'thing19':{'value':'审核通过'}
+    let token = wx.getStorageSync('access_token');
+    let url = 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=' + token;
+    let TempData = {
+      'name9': {
+        'value': '宫志鑫'
+      },
+      'thing2': {
+        'value': '申请作者'
+      },
+      'date4': {
+        'value': '2020-04-18'
+      },
+      'phrase16': {
+        'value': '审核完成'
+      },
+      'thing19': {
+        'value': '审核通过'
+      }
     };
-    let data={
-      'touser':'oVTwL41RinDRRX7gLZo7nGkcdYpI',
-      'template_id':'lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE',
-      'data':TempData
+    let data = {
+      'touser': 'oVTwL41RinDRRX7gLZo7nGkcdYpI',
+      'template_id': 'lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE',
+      'data': TempData
     }
-    let callback=function(res){
+    let callback = function (res) {
       console.log(res)
     }
-    utils.HttpRequest(url,"POST",data,callback);
+    utils.HttpRequest(url, "POST", data, callback);
     wx.removeStorageSync('access_token');
   },
+  websocket: () => {
+    wx.navigateTo({
+      url: '../Websocket/Websocket',
+    });
+  }
 });

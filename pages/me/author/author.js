@@ -120,7 +120,7 @@ Page({
               let url = domainUrl + '/wxLogin/TemplateMessage';
               let reqData = {
                 'sessionId': wx.getStorageSync('SessionId'),
-                'Auditresults': Auditresults
+                'templateId': 'lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE'
               }
               let callback = function (res) {
                 console.log(res)

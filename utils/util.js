@@ -22,22 +22,24 @@ const formatNumber = n => {
  * @param {*} data    控制器参数，object类型
  * @param {*} callBack  回调
  */
-let HttpRequest = function (url, method, data,callBack) {
-   wx.request({
+let HttpRequest = function (url, method, data,callBack,header) {
+  return wx.request({
     url: url,
     data: data,
+    header:{
+      // 'content-type': 'application/octet-stream'
+      // 'content-type': 'application/json'
+      'content-type': header
+    },
     fail: (err) => {
       wx.showModal({
         showCancel:false,
         title:'Tips',
         content:err.errMsg
       });
-    },
-    header: {
-      "content-type": 'application/json'
-    },
+    },    
     method: method,
-    success: callBack    
+    success: callBack  
   });  
 }
 //获取access_token
