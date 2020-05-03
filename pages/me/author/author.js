@@ -30,7 +30,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function () {    
     wx.requestSubscribeMessage({
       tmplIds: ['lvwRHvXqqcPBRWWigbPpT0F7C89GFFdOI-Y4tjhpdqE'],
       success:res=>{

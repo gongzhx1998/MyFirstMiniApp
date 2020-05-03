@@ -8,8 +8,8 @@
     "pages/me/MyBaseInfo/MyBaseInfo",
     "pages/me/MyCollection/Collection",
     "pages/me/author/author",
-    "pages/Websocket/Websocket"
-    
+    "pages/Websocket/Websocket",
+    "pages/me/topics/topics"
   ],
   "permission": {
     "scope.userLocation": {
@@ -29,21 +29,21 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath":"img/index.png",
-        "selectedIconPath":"img/index-select.png"
+        "iconPath": "img/index.png",
+        "selectedIconPath": "img/index-select.png"
       },
       {
         "pagePath": "pages/temp/temp",
         "text": "文章",
-        "iconPath":"img/news.png",
-        "selectedIconPath":"img/news-select.png"
+        "iconPath": "img/news.png",
+        "selectedIconPath": "img/news-select.png"
       },
       {
         "pagePath": "pages/me/me",
         "text": "个人中心",
-        "iconPath":"img/person.png",
-        "selectedIconPath":"img/person-select.png",
-        "badge":false
+        "iconPath": "img/person.png",
+        "selectedIconPath": "img/person-select.png",
+        "badge": false
       }
     ]
   },

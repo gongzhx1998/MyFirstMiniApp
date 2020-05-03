@@ -11,7 +11,7 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
-    })
+    });
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -70,6 +70,16 @@ App({
         }
       });
     });
+    //检查登录状态
+    wx.checkSession({
+      success:res=>{},
+      fail:err=>{
+        console.log("登录session失效");
+        wx.removeStorageSync('openId');
+        wx.removeStorageSync('SessionId');
+      },
+      complete: (res) => {},
+    })
   },
   globalData: {
     userInfo: null,

@@ -1,0 +1,10 @@
+<template name='topicsTemp'>
+	<view wx:for="{{topics}}" wx:key="Index">
+		<text>{{index+1}}.{{item.Question}}</text>
+		<radio-group bindchange="radChange" data-QuestionId="{{item.QuestionId}}">
+			<radio wx:for='{{item.Answers}}' wx:key='Index'  value="{{item.Answer}}">{{item.Answer}}</radio>
+		</radio-group>
+	</view>
+</template>
+
+<template is="topicsTemp" data="{{topics}}"></template>

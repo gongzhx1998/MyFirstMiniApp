@@ -318,4 +318,10 @@ Page({
       url: 'author/author',
     });
   },
+  //题目页面
+  answer:function(){
+    wx.navigateTo({
+      url: './topics/topics',
+    });
+  },
 })

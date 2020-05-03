@@ -21,6 +21,7 @@ const formatNumber = n => {
  * @param {*} method 请求方式 
  * @param {*} data    控制器参数，object类型
  * @param {*} callBack  回调
+ * @param {*} header  请求头
  */
 let HttpRequest = function (url, method, data,callBack,header) {
   return wx.request({

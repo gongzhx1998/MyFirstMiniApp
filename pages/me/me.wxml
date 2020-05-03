@@ -24,6 +24,11 @@
 			<image src="/img/publisher.png"></image>
 			<text>申请作者</text>
 		</view>
+		<!-- 答题 -->
+		<view bindtap="answer" class="ask flex">
+			<image src="/img/publisher.png"></image>
+			<text>趣味答题</text>
+		</view>
 		<!-- 查看收藏 -->
 		<view bindtap="ViewCollection" class="MyCollection flex">
 			<image src="/img/MyCollection.png"></image>
