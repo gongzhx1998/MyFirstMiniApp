@@ -10,14 +10,17 @@ Page({
    */
   data: {
     topics: null,
-    testScore: 0
+    testScore: 0,
+    display:'none',
+    isHidden:true,
+    ScoreIsHidden:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('onload')
+    let that=this;
     let openid = wx.getStorageSync('openId');
     if (openid == null | openid == '') {
       wx.showModal({
@@ -28,7 +31,7 @@ Page({
           if (res.confirm) {
             wx.switchTab({
               url: '../me',
-            })
+            });
           }
         }
       });
@@ -36,6 +39,9 @@ Page({
 
     let a = res => {
       wx.setStorageSync('topics', res.data);
+      that.setData({
+        topics: res.data
+      });
     }
     util.HttpRequest(domainURL + '/Topics', 'POST', null, a);
   },
@@ -44,9 +50,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      topics: wx.getStorageSync('topics')
-    });
+    
   },
 
   /**
@@ -60,14 +64,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    testedValue=[];
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    testedValue=[];
   },
 
   /**
@@ -115,6 +119,35 @@ Page({
         break;
       }
     }
-    console.log(testedValue)
+
+    if(testedValue.length==initData.length){
+      this.setData({
+        display:'block'
+      });
+    }
+  },
+  submitAnwser:function(){
+    let score=0;
+    for (let item of testedValue) {
+      score=item.isTrue?score+=1:score;
+    }
+    this.setData({
+      testScore:score,
+      isHidden:false,
+      ScoreIsHidden:true
+    });
+
+    let ReqData={
+      data:JSON.stringify(testedValue),
+      sessionId:wx.getStorageSync('SessionId'),
+      score:score,
+      nickName:wx.getStorageSync("BaseUserInfo").nickName
+    }
+    util.HttpRequest(domainURL+'/Topics/TestedValue','POST',ReqData,res=>{
+      console.log(res);
+    },'application/json');
+
+    testedValue=[];
+    wx.removeStorageSync('topics');
   }
 })

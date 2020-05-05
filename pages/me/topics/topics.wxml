@@ -7,4 +7,10 @@
 	</view>
 </template>
 
-<template is="topicsTemp" data="{{topics}}"></template>
+<view wx:if='{{isHidden}}'>
+  <template is="topicsTemp" data="{{topics}}"></template>
+  <button bindtap="submitAnwser" type="primary" style="display:{{display}};">完成</button>
+</view>
+<view wx:if="{{ScoreIsHidden}}">
+测试完成,你累积获得了{{testScore}}分！
+</view>
