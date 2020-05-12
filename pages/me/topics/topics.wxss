@@ -1,1 +1,7 @@
-/* pages/me/topics/topics.wxss */
+.TopicsWrap{
+
+}
+.title{
+  display: block;
+  margin: 20rpx 0 20rpx 0;
+}

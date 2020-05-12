@@ -9,7 +9,8 @@
     "pages/me/MyCollection/Collection",
     "pages/me/author/author",
     "pages/Websocket/Websocket",
-    "pages/me/topics/topics"
+    "pages/me/topics/topics",
+    "pages/temp/buildNews/buildNews"
   ],
   "permission": {
     "scope.userLocation": {

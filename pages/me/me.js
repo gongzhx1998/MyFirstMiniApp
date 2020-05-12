@@ -269,6 +269,10 @@ Page({
         'open_Id': openid
       },
       success: res => {
+        // console.log(res)        
+        // for (let item of res.data.data) {
+        //   item.ContentIMG=wx.arrayBufferToBase64(item.ContentIMG)
+        // }
         let temp = res.data.data;
         if (res.data.msg == '获取成功') {
           wx.navigateTo({

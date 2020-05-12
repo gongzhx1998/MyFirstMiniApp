@@ -2,7 +2,7 @@
   <view wx:for="{{initData}}" wx:key="Index" bindtap="navgateDetail" data-NewsId="{{item.NewsId}}">
     <view class="content-wrap">
       <view class="content-head">
-        <image src="{{item.HeaderIMG}}"></image>
+        <image src="{{item.NewsAuthor.Avatar}}"></image>
         <text>{{item.Title}}</text>
       </view>
       <view class="content-body">

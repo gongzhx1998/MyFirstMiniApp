@@ -27,6 +27,7 @@ Page({
         'NewsId': id
       },
       success: res => {
+        res.data.ContentIMG=wx.arrayBufferToBase64(res.data.ContentIMG);
         that.setData({
           psot_data: res.data,
           FavoritesCount: res.data.FavoritesCount

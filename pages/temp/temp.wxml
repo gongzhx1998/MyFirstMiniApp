@@ -14,7 +14,7 @@
 		</view>
 	</view>
 </view>
-
+<!-- 整个轮播和文章的主体页面 -->
 <view class="body" wx:if="{{IsBodyShow}}">
 	<!-- 轮播模块 -->
 	<swiper class="div" indicator-dots="true" autoplay="true" interval="3500">
@@ -37,7 +37,7 @@
 		</view>
 		<text class="post-title">{{item.Title}}</text>
 		<view bindtap="post_item" data-newsID="{{item.NewsId}}" data-NewsTitle="{{item.Title}}">
-			<image src="{{item.ContentIMG}}" style="width:100%;"></image>
+			<image src="data:image/png;base64,{{item.ContentIMG}}" style="width:100%;"></image>
 			<text  class="post-content">{{item.Content}}</text>
 		</view>
 		<view class="post-footer">
@@ -48,8 +48,6 @@
 		</view>
 	</view>
 </view>
-
-
 <!-- 搜索的页面 -->
 <view class="SearchView" wx:if="{{IsSearchViewShow}}">
 	<view class="post-Container" wx:for="{{Searched_data}}" wx:key="Index">
@@ -60,7 +58,7 @@
 		</view>
 		<text class="post-title">{{item.Title}}</text>
 		<view bindtap="post_item" data-newsID="{{item.NewsId}}">
-			<image src="{{item.ContentIMG}}" style="width:100%;"></image>
+			<image src="data:image/png;base64,{{item.ContentIMG}}" style="width:100%;"></image>
 			<text  class="post-content">{{item.Content}}</text>
 		</view>
 		<view class="post-footer">

@@ -8,7 +8,8 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [year, month, day].map(formatNumber).join('/');
+  // return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
 const formatNumber = n => {
@@ -24,12 +25,16 @@ const formatNumber = n => {
  * @param {*} header  请求头
  */
 let HttpRequest = function (url, method, data,callBack,header) {
+  if(header==null||header==''){
+    header='application/json'
+  }
   return wx.request({
     url: url,
     data: data,
     header:{
-      // 'content-type': 'application/octet-stream'
-      // 'content-type': 'application/json'
+      // 'content-type': 'application/octet-stream' 鉴黄接口用到了
+      // 'content-type': 'application/json'   大多数情况用这个
+      // 'content-type':"multipart/form-data"  上传文件
       'content-type': header
     },
     fail: (err) => {

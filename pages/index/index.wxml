@@ -13,7 +13,7 @@
   <text>{{aa}}</text>
 </template>
 <button type="warn" bindtap="down">点击下载</button>
-<button type="primary" bindtap="uploadFile">上传图片</button>
+<!-- <button type="primary" bindtap="uploadFile">上传图片</button> -->
 <button type="warn" bindtap="openDoc">openDoc</button>
 <button bindtap="OpenCategory">获取模版列表</button>
 <button bindtap="websocket" type="primary">websocket</button>

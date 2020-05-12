@@ -1,0 +1,23 @@
+  <!-- navagationBar -->
+  <view class="wrap" style="width:100%;height:{{wrapHeight}}px;">
+  	<view style="height:{{wrapHeight}}px;">
+  		<view class="statusBar" style="width:100%;height:{{statusBarHeight}}px;"></view>
+  		<view class="navgationBar" style="width:100%;">
+  			<!-- <view class="backHome">
+  				
+  			</view> -->
+        <button plain="true" id='backBtn' size="mini" catchtap="backHome">Back</button>
+  			<view class="btn">
+  				<button plain="true" type="warn" size='mini' bindtap='addPic' wx:if='{{picShow}}'>添加图片</button>
+  				<button plain="true" type="warn" size='mini' bindtap='submit' wx:if='{{subShow}}'>提交</button>
+  			</view>
+  		</view>
+  	</view>
+  </view>
+  <!-- 新建文章页面  -->
+  <view class="NewsConstruction" style="padding-top:{{wrapHeight}}px;">
+  	<view class="title">
+  		<input placeholder="在这里输入标题" placeholder-style="font-style: italic;" bindblur="titleOnBlur"></input>
+  	</view>
+  	<editor id="editor" class="q-editor" placeholder="开始输入正文..." bindready='editorReady' bindblur='editorInput'></editor>
+  </view>

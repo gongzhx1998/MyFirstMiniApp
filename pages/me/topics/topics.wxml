@@ -1,6 +1,6 @@
 <template name='topicsTemp'>
-	<view wx:for="{{topics}}" wx:key="Index">
-		<text>{{index+1}}.{{item.Question}}</text>
+	<view wx:for="{{topics}}" wx:key="Index" class="TopicsWrap">
+		<text class="title">{{index+1}}. {{item.Question}}</text>
 		<radio-group bindchange="radChange" data-QuestionId="{{item.QuestionId}}">
 			<radio wx:for='{{item.Answers}}' wx:key='Index'  value="{{item.Answer}}">{{item.Answer}}</radio>
 		</radio-group>
@@ -9,8 +9,8 @@
 
 <view wx:if='{{isHidden}}'>
   <template is="topicsTemp" data="{{topics}}"></template>
-  <button bindtap="submitAnwser" type="primary" style="display:{{display}};">完成</button>
+  <button bindtap="submitAnwser" type="primary" style="display:{{display}};margin-top:40rpx;">完成</button>
 </view>
 <view wx:if="{{ScoreIsHidden}}">
-测试完成,你累积获得了{{testScore}}分！
+测试完成,你累积获得了{{testScore}}分！太棒了！
 </view>

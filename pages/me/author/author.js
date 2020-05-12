@@ -125,7 +125,7 @@ Page({
               let callback = function (res) {
                 console.log(res)
               }
-              utils.HttpRequest(url, 'POST', reqData, callback);
+              utils.HttpRequest(url, 'POST', reqData, callback,'application/json');
             }
           }
         });
