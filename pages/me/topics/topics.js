@@ -141,7 +141,8 @@ Page({
       data:JSON.stringify(testedValue),
       sessionId:wx.getStorageSync('SessionId'),
       score:score,
-      nickName:wx.getStorageSync("BaseUserInfo").nickName
+      nickName:wx.getStorageSync("BaseUserInfo").nickName,
+      platform:'WX-MiniApp'
     }
     util.HttpRequest(domainURL+'/Topics/TestedValue','POST',ReqData,res=>{
       console.log(res);
