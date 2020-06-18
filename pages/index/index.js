@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp();
 const domainUrl = app.globalData.url;
+let uploadFunction=require('../../utils/uploadFile.js');
 let utils = require('../../utils/util.js')
 Page({
   data: {
@@ -302,5 +303,22 @@ Page({
     wx.navigateTo({
       url: '../Websocket/Websocket',
     });
-  }
+  },
+  //点击按钮上传文件到AliOss
+  UploadToOss:function(){
+    wx.chooseImage({
+      count:1,
+      complete: (res) => {
+        let filePath= res.tempFilePaths[0];
+        wx.showToast({
+          title: '此功能被禁用',
+        });
+        // uploadFunction(filePath,'',res=>{
+        //   console.log(res);
+        // },err=>{
+        //   console.log(err);
+        // });
+      },
+    });
+  },
 });

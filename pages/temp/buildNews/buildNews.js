@@ -6,6 +6,7 @@ let newsData={
 let path;
 let app=getApp();
 let util=require('../../../utils/util.js');
+let uploadFunction=require('../../../utils/uploadFile.js');
 let domainUrl=app.globalData.url;
 Page({
 
@@ -24,8 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var time=util.formatTime(new Date);
-    console.log(time);
+  
   },
 
   /**
@@ -39,7 +39,6 @@ Page({
     this.setData({
       wrapHeight:app.globalData.page_header_height,
       statusBarHeight:app.globalData.statusBarHeight,
-      // navgationBarHeight:
     });
   },
 
@@ -122,45 +121,32 @@ Page({
   submit:function(){    
     newsData.AuthorId= wx.getStorageSync('AuthorEntity').AuthorId;
     newsData.time=util.formatTime(new Date);
-       wx.uploadFile({
-         filePath: path,
-         name: 'file',
-         url: domainUrl+'/Work/BuildNews',
-         header:{
-           'content-type':'multipart/form-data'
-         },
-         formData: {
-          'news': JSON.stringify(newsData)
-        },
-         success:res=>{
-          let result=JSON.parse(res.data);
-          wx.showToast({
-            title: result.msg,
-            icon:"none",
-            duration:2000
-          });
-         },
-         fail:err=>{
-           console.log(err);
-         }
-       });    
+    uploadFunction(path,'',res=>{
+      newsData.ContentImg=res
+    },err=>{
+      wx.showModal({
+        title:'Tips',
+        content:err,
+        showCancel:false
+      });
+      return;
+    });
 
-
-
-    // util.HttpRequest(domainUrl+'/Work/BuildNews','POST',data,res=>{      
-    //   wx.showModal({
-    //     title:'Tips',
-    //     content:res.data.Msg,
-    //     showCancel:false,
-    //     success:res=>{
-    //       if(res.confirm){
-    //         wx.switchTab({
-    //           url: '../temp',
-    //         });
-    //       }
-    //     }
-    //   });
-    // },"application/json");
+    util.HttpRequest(domainUrl+'/Work/BuildNews','POST',{'news':JSON.stringify(newsData)},res=>{
+      console.log(res);
+      wx.showModal({
+        title:'Tips',
+        content:res.data.Msg,
+        showCancel:false,
+        success:res=>{
+          if(res.confirm){
+            wx.switchTab({
+              url: '../temp',
+            });
+          }
+        }
+      });
+    },"application/json");
   },
   // backHome
   backHome:function(){

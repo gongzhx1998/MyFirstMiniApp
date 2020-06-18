@@ -8,7 +8,7 @@
     <text>{{psot_data.Title}}</text>
   </view>
   <view data-newsID="{{psot_data.NewsId}}">
-    <image src="data:image/png;base64,{{psot_data.ContentIMG}}" style="width:100%;"></image>
+    <image src="{{psot_data.ContentIMG}}" style="width:100%;"></image>
     <text class="post-content">{{psot_data.Content}}</text>
   </view>
   <view class="post-footer">

@@ -17,9 +17,8 @@
 <button type="warn" bindtap="openDoc">openDoc</button>
 <button bindtap="OpenCategory">获取模版列表</button>
 <button bindtap="websocket" type="primary">websocket</button>
+<button bindtap="UploadToOss">UploadToOss</button>
 <!-- <button bindtap="OpenCategory1">templateMSG</button> -->
-
-
 <!-- 
 <scroll-view scroll-y='true' style="width:100%;height:300px;" class="scr">
   <view>

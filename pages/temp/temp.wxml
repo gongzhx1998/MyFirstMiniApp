@@ -37,7 +37,7 @@
 		</view>
 		<text class="post-title">{{item.Title}}</text>
 		<view bindtap="post_item" data-newsID="{{item.NewsId}}" data-NewsTitle="{{item.Title}}">
-			<image src="data:image/png;base64,{{item.ContentIMG}}" style="width:100%;"></image>
+			<image src="{{item.ContentIMG}}" style="width:100%;"></image>
 			<text  class="post-content">{{item.Content}}</text>
 		</view>
 		<view class="post-footer">
@@ -58,7 +58,7 @@
 		</view>
 		<text class="post-title">{{item.Title}}</text>
 		<view bindtap="post_item" data-newsID="{{item.NewsId}}">
-			<image src="data:image/png;base64,{{item.ContentIMG}}" style="width:100%;"></image>
+			<image src="{{item.ContentIMG}}" style="width:100%;"></image>
 			<text  class="post-content">{{item.Content}}</text>
 		</view>
 		<view class="post-footer">

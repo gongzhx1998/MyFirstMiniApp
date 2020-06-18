@@ -38,8 +38,8 @@ App({
     });
     //是否为调试状态
     let isDebug = false;
-    let _url = isDebug ? 'http://api.legschina.com' : 'https://legschina.com';
-    let _wssUrl = isDebug ? 'ws://api.legschina.com' : 'wss://legschina.com';
+    let _url = isDebug ? 'http://api.legschina.com' : 'https://wxapi.legschina.com';
+    let _wssUrl = isDebug ? 'ws://api.legschina.com' : 'wss://wxapi.legschina.com';
     this.globalData.url = _url;
     this.globalData.wssUrl = _wssUrl;
 

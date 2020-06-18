@@ -68,13 +68,10 @@ Page({
       data: {
         'str': str
       },
-      success: res => {        
+      success: res => {      
         if (res.data == null || res.data.length == 0) {
           return;
-        }
-        for (let item of res.data) {
-          item.ContentIMG=wx.arrayBufferToBase64(item.ContentIMG)
-        }        
+        }             
         that.setData({
           Searched_data: res.data
         });
@@ -97,9 +94,6 @@ Page({
         "content-type": 'application/json'
       },
       success: res => {
-        for (let item of res.data) {
-          item.ContentIMG=wx.arrayBufferToBase64(item.ContentIMG)
-        }
         let post_data = res.data;
         that.setData({
           psot_data: post_data
@@ -207,9 +201,6 @@ Page({
           });
           return;
         }
-        for (let item of res.data) {
-          item.ContentIMG=wx.arrayBufferToBase64(item.ContentIMG)          
-        }
         let post_data = that.data.psot_data.concat(res.data);
         that.setData({
           psot_data: post_data
@@ -231,5 +222,4 @@ Page({
   onShareAppMessage: function () {
 
   },
-
 })
