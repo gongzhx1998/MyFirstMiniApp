@@ -1,9 +1,9 @@
-var fileHost='https://oss-legschina.oss-cn-beijing.aliyuncs.com/';
+var fileHost='https://oss-legchina.oss-cn-beijing.aliyuncs.com/';
 
 var config={
   uploadImageUrl:`${fileHost}`,
-  AccessKeySecret:'vyJ8luXOgZrphFsHD2D5ZpVyqlWZCw',
-  OSSAccessKeyId:'LTAI4G1XcSWuuYEhd6dazNqb',
+  AccessKeySecret:'xx30999uXOgZrphFsHD2D5ZpVyqlWZCw',
+  OSSAccessKeyId:'L29yokLG1XcSWuuYEhd6dazNqb',
   timeout:87600
 };
 module.exports=config;
