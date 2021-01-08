@@ -1,8 +1,7 @@
 # MyFirstMiniApp
-# 同意变量名｛
-#		openid统一写为open_Id
-#	｝
-#
+## 统一变量名
+		openid统一写为open_Id
+
 
 
 
