@@ -1,11 +1,6 @@
 # MyFirstMiniApp
 ## 统一变量名
-		openid统一写为open_Id
-
-
-
-
-
+openid统一写为open_Id
 ##  4月2号未解决
 1、如果key   log不存在点击清理缓存会死循环，写一个出口
 
